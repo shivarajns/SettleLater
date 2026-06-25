@@ -5,6 +5,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class EmailSenderService {
     private final JavaMailSender javaMailSender;
@@ -28,5 +30,28 @@ public class EmailSenderService {
         );
 
         javaMailSender.send(message);
+    }
+
+    @Async
+    public void passwordResetMail(
+            String to,
+            String resetLink
+    ){
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setTo(to);
+        mail.setSubject("Reset your Password");
+        mail.setText("Click this link to reset your Password: "+resetLink);
+        javaMailSender.send(mail);
+    }
+
+    @Async
+    public void sendSuccessMail(String To,String Subject, String Message){
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setTo(To);
+        mail.setSubject(Subject);
+        mail.setFrom("SettleLater");
+        mail.setText(Message);
+
+        javaMailSender.send(mail);
     }
 }
