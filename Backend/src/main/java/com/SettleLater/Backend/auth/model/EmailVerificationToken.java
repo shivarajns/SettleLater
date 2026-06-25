@@ -25,7 +25,7 @@ public class EmailVerificationToken {
             referencedColumnName = "user_id",
             nullable = false
     )
-    private User userId;
+    private User user;
 
     @Column(name = "issued_at", nullable = false)
     private LocalDateTime issuedAt;
@@ -50,16 +50,16 @@ public class EmailVerificationToken {
     }
 
     public User getUserId() {
-        return userId;
+        return user;
     }
 
     public void setUserId(User userId) {
-        this.userId = userId;
+        this.user = userId;
     }
 
     @PrePersist
     public void prePersist(){
         this.issuedAt = LocalDateTime.now();
-        this.expiresAt = LocalDateTime.now().plusDays(30);
+        this.expiresAt = LocalDateTime.now().plusMinutes(20);
     }
 }
