@@ -1,4 +1,4 @@
-package com.SettleLater.Backend.Others.Configuration;
+package com.SettleLater.Backend.Common.Configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
