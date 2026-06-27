@@ -1,9 +1,13 @@
 package com.SettleLater.Backend.auth.model;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "Users",
@@ -14,7 +18,7 @@ import java.time.LocalDateTime;
             )
         }
 )
-public class User {
+public class User implements UserDetails {
     @Id
     @Column(name = "user_id", nullable = false, unique = true)
     private String userId;
@@ -47,8 +51,38 @@ public class User {
         this.email = email;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return isVerified;
     }
 
     public void setPassword(String password) {
