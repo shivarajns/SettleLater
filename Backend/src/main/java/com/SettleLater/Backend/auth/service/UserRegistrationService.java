@@ -1,8 +1,8 @@
 package com.SettleLater.Backend.auth.service;
 
 import com.SettleLater.Backend.Common.EmailSender.EmailSenderService;
-import com.SettleLater.Backend.auth.DTO.RegisterRequestDTO;
-import com.SettleLater.Backend.auth.DTO.RegisterResponseDTO;
+import com.SettleLater.Backend.auth.dto.RegisterRequestDTO;
+import com.SettleLater.Backend.auth.dto.RegisterResponseDTO;
 import com.SettleLater.Backend.auth.model.EmailVerificationToken;
 import com.SettleLater.Backend.auth.model.User;
 import com.SettleLater.Backend.auth.repository.EmailVerificationTokenRepository;
@@ -39,6 +39,8 @@ public class UserRegistrationService {
         user.setEmail(requestDTO.getEmail());
         String encodedPassword = passwordEncoder.encode(requestDTO.getPassword());
         user.setPassword(encodedPassword);
+        user.setUserName(requestDTO.getUserName());
+        user.setPhoneNumber(requestDTO.getPhoneNumber());
         userRepository.save(user);
 
         String token = UUID.randomUUID().toString();
@@ -47,7 +49,7 @@ public class UserRegistrationService {
         emailVerificationToken.setToken(token);
         emailVerificationTokenRepository.save(emailVerificationToken);
 
-        String verificationLink = "http://localhost:8080/auth/verify?token="+token;
+        String verificationLink = "http://localhost:8080/verify?token="+token;
 
         emailSenderService.sendVarificationEmail(user.getEmail(), verificationLink);
 

@@ -1,7 +1,7 @@
 package com.SettleLater.Backend.auth.controller;
 
-import com.SettleLater.Backend.auth.DTO.RegisterRequestDTO;
-import com.SettleLater.Backend.auth.DTO.RegisterResponseDTO;
+import com.SettleLater.Backend.auth.dto.RegisterRequestDTO;
+import com.SettleLater.Backend.auth.dto.RegisterResponseDTO;
 import com.SettleLater.Backend.auth.service.UserRegistrationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

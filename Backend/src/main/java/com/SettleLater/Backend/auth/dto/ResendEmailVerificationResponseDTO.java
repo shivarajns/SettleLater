@@ -1,6 +1,6 @@
-package com.SettleLater.Backend.auth.DTO;
+package com.SettleLater.Backend.auth.dto;
 
-public class EmailVerifyResponseDTO {
+public class ResendEmailVerificationResponseDTO {
     private String message;
 
     public String getMessage() {

@@ -1,6 +1,6 @@
 package com.SettleLater.Backend.auth.controller;
 
-import com.SettleLater.Backend.auth.DTO.PasswordResetMailResponseDTO;
+import com.SettleLater.Backend.auth.dto.PasswordResetMailResponseDTO;
 import com.SettleLater.Backend.auth.service.PasswordResetMailService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

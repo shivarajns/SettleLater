@@ -1,6 +1,6 @@
 package com.SettleLater.Backend.auth.controller;
 
-import com.SettleLater.Backend.auth.DTO.ResendEmailVerificationResponseDTO;
+import com.SettleLater.Backend.auth.dto.ResendEmailVerificationResponseDTO;
 import com.SettleLater.Backend.auth.service.ResendEmailVerificationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

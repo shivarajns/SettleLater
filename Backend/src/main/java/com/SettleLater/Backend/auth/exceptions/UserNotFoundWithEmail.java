@@ -1,4 +1,4 @@
-package com.SettleLater.Backend.auth.Exceptions;
+package com.SettleLater.Backend.auth.exceptions;
 
 public class UserNotFoundWithEmail extends RuntimeException {
     public UserNotFoundWithEmail(String message) {

@@ -1,7 +1,7 @@
 package com.SettleLater.Backend.auth.service;
 
 import com.SettleLater.Backend.Common.EmailSender.EmailSenderService;
-import com.SettleLater.Backend.auth.DTO.PasswordResetMailResponseDTO;
+import com.SettleLater.Backend.auth.dto.PasswordResetMailResponseDTO;
 import com.SettleLater.Backend.auth.model.User;
 import com.SettleLater.Backend.auth.repository.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

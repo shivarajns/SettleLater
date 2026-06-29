@@ -1,9 +1,9 @@
 package com.SettleLater.Backend.auth.service;
 
 import com.SettleLater.Backend.Common.EmailSender.EmailSenderService;
-import com.SettleLater.Backend.auth.DTO.ResendEmailVerificationResponseDTO;
-import com.SettleLater.Backend.auth.Exceptions.TokenNotFound;
-import com.SettleLater.Backend.auth.Exceptions.UserNotFoundWithEmail;
+import com.SettleLater.Backend.auth.dto.ResendEmailVerificationResponseDTO;
+import com.SettleLater.Backend.auth.exceptions.TokenNotFound;
+import com.SettleLater.Backend.auth.exceptions.UserNotFoundWithEmail;
 import com.SettleLater.Backend.auth.model.EmailVerificationToken;
 import com.SettleLater.Backend.auth.model.User;
 import com.SettleLater.Backend.auth.repository.EmailVerificationTokenRepository;

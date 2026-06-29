@@ -1,7 +1,7 @@
 package com.SettleLater.Backend.auth.controller;
 
-import com.SettleLater.Backend.auth.DTO.PasswordResetRequestDTO;
-import com.SettleLater.Backend.auth.DTO.PasswordResetResponseDTO;
+import com.SettleLater.Backend.auth.dto.PasswordResetRequestDTO;
+import com.SettleLater.Backend.auth.dto.PasswordResetResponseDTO;
 import com.SettleLater.Backend.auth.service.PasswordResetService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

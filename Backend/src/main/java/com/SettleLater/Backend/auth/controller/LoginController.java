@@ -1,7 +1,7 @@
 package com.SettleLater.Backend.auth.controller;
 
-import com.SettleLater.Backend.auth.DTO.LoginRequestDTO;
-import com.SettleLater.Backend.auth.DTO.LoginResponseDTO;
+import com.SettleLater.Backend.auth.dto.LoginRequestDTO;
+import com.SettleLater.Backend.auth.dto.LoginResponseDTO;
 import com.SettleLater.Backend.auth.service.LoginService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
