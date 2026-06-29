@@ -1,7 +1,7 @@
 package com.SettleLater.Backend.auth.service;
 
-import com.SettleLater.Backend.auth.DTO.LoginRequestDTO;
-import com.SettleLater.Backend.auth.DTO.LoginResponseDTO;
+import com.SettleLater.Backend.auth.dto.LoginRequestDTO;
+import com.SettleLater.Backend.auth.dto.LoginResponseDTO;
 import com.SettleLater.Backend.auth.model.User;
 import com.SettleLater.Backend.auth.repository.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

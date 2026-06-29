@@ -33,6 +33,7 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/register",
                                 "/login",
+                                "/verify",
                                 "/test/public"
                         )
                         .permitAll()

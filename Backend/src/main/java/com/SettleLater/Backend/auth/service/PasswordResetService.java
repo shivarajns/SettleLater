@@ -1,8 +1,8 @@
 package com.SettleLater.Backend.auth.service;
 
 import com.SettleLater.Backend.Common.EmailSender.EmailSenderService;
-import com.SettleLater.Backend.auth.DTO.PasswordResetRequestDTO;
-import com.SettleLater.Backend.auth.DTO.PasswordResetResponseDTO;
+import com.SettleLater.Backend.auth.dto.PasswordResetRequestDTO;
+import com.SettleLater.Backend.auth.dto.PasswordResetResponseDTO;
 import com.SettleLater.Backend.auth.model.User;
 import com.SettleLater.Backend.auth.repository.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Service
 public class PasswordResetService {

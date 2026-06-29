@@ -1,4 +1,4 @@
-package com.SettleLater.Backend.auth.DTO;
+package com.SettleLater.Backend.auth.dto;
 
 public class PasswordResetRequestDTO {
     private String userId;

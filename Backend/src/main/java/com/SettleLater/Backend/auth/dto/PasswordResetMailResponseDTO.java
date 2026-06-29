@@ -1,8 +1,6 @@
-package com.SettleLater.Backend.auth.DTO;
+package com.SettleLater.Backend.auth.dto;
 
-
-public class RegisterResponseDTO {
-
+public class PasswordResetMailResponseDTO {
     private String message;
 
     public String getMessage() {
