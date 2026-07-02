@@ -4,10 +4,7 @@ import com.SettleLater.Backend.auth.dto.LoginRequestDTO;
 import com.SettleLater.Backend.auth.dto.LoginResponseDTO;
 import com.SettleLater.Backend.auth.service.LoginService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/login")
@@ -18,7 +15,7 @@ public class LoginController {
         this.loginService = loginService;
     }
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<LoginResponseDTO> login(
             @RequestBody LoginRequestDTO request
             ) {
