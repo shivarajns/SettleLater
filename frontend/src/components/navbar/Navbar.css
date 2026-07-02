@@ -20,9 +20,16 @@
 
 .navbar-scrolled {
   padding: 0.65rem 0;
-  background: rgba(248, 250, 252, 0.75);
-  backdrop-filter: blur(24px) saturate(180%);
-  box-shadow: 0 16px 48px var(--shadow);
+
+  background: rgba(255, 255, 255, 0.92);
+
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.08),
+    0 2px 8px rgba(15, 23, 42, 0.04);
+
+  transition: all 0.3s ease;
 }
 
 .navbar-container {
@@ -156,7 +163,6 @@
 }
 
 .login-btn:hover {
-  background: rgba(15, 23, 42, 0.08);
   transform: translateY(-2px);
 }
 
@@ -223,10 +229,12 @@
 }
 
 @keyframes brandFloat {
+
   0%,
   100% {
     transform: rotate(8deg) translateY(0px);
   }
+
   50% {
     transform: rotate(6deg) translateY(-3px);
   }
@@ -241,10 +249,11 @@
     display: flex;
   }
 
+  /* Mobile menu: keep it off-screen and non-interactive when closed to avoid touch interception. */
   .nav-menu {
     position: fixed;
-    top: 84px;
-    right: -100%;
+    top: 72px;
+    right: 0;
     width: min(92vw, 320px);
     padding: 1rem;
     border-radius: 24px;
@@ -256,14 +265,21 @@
     align-items: stretch;
     gap: 0.7rem;
     opacity: 0;
-    transform: translateX(12px);
-    transition: all 0.35s ease;
+    transform: translateX(110%);
+    /* fully off-screen to the right */
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    pointer-events: none;
+    /* don't capture touches when closed */
+    visibility: hidden;
   }
 
   .nav-menu.open {
     right: 1rem;
     opacity: 1;
     transform: translateX(0);
+    pointer-events: auto;
+    /* allow interaction when open */
+    visibility: visible;
   }
 
   .nav-actions {
@@ -295,5 +311,42 @@
 
   .brand-tag {
     letter-spacing: 0.15em;
+  }
+}
+
+/* Extra small devices (phones 320px and below) */
+@media (max-width: 360px) {
+  .navbar-container {
+    padding: 0 0.75rem;
+    min-height: 56px;
+  }
+
+  .hamburger {
+    width: 42px;
+    height: 42px;
+  }
+
+  .nav-menu {
+    top: 68px;
+    width: min(94vw, 280px);
+    padding: 0.75rem;
+    border-radius: 18px;
+  }
+
+  .brand-name {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .nav-menu {
+    top: 64px;
+    width: 92vw;
+    padding: 0.6rem;
+  }
+
+  .brand-tag {
+    display: none;
+    /* save space on very small screens */
   }
 }
