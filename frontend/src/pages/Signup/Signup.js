@@ -4,6 +4,7 @@ import "./Signup.css";
 import Loader from "../../components/Loader/Loader";
 import Alert from "../../components/Alert/Alert";
 import { registerUser } from "../../api/authApi";
+import { Link } from "react-router-dom";
 
 function Signup() {
   const [loading, setLoading] = useState(false);
@@ -47,9 +48,7 @@ function Signup() {
     });
   };
 
-  // =========================
-  // PASSWORD STRENGTH (FIXED)
-  // =========================
+
   const getPasswordStrength = () => {
     const password = formData.password;
 
@@ -69,7 +68,6 @@ function Signup() {
     const hasSpecial = /[^A-Za-z0-9]/.test(password);
     const length = password.length;
 
-    // length scoring (important FIX)
     if (length >= 6) score += 20;
     if (length >= 8) score += 20;
     if (length >= 10) score += 10;
@@ -107,9 +105,6 @@ function Signup() {
 
   const strength = getPasswordStrength();
 
-  // =========================
-  // VALIDATIONS
-  // =========================
   const usernameValid = formData.userName.trim().length >= 3;
 
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
@@ -131,9 +126,7 @@ function Signup() {
     return null;
   };
 
-  // =========================
-  // SUBMIT
-  // =========================
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -201,7 +194,7 @@ function Signup() {
           className="ledger-svg"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Book base */}
+
           <path
             d="M150 120 Q400 40 650 120 L650 480 Q400 560 150 480 Z"
             fill="none"
@@ -209,7 +202,7 @@ function Signup() {
             strokeWidth="2"
           />
 
-          {/* Left page */}
+
           <path
             d="M150 120 Q400 200 400 300 Q400 400 150 480 Z"
             fill="rgba(79,70,229,0.04)"
@@ -217,7 +210,7 @@ function Signup() {
             strokeWidth="1"
           />
 
-          {/* Right page */}
+
           <path
             d="M650 120 Q400 200 400 300 Q400 400 650 480 Z"
             fill="rgba(6,182,212,0.04)"
@@ -225,7 +218,7 @@ function Signup() {
             strokeWidth="1"
           />
 
-          {/* Ledger lines */}
+
           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
             <line
               key={i}
@@ -238,7 +231,6 @@ function Signup() {
             />
           ))}
 
-          {/* Center spine */}
           <line
             x1="400"
             y1="120"
@@ -320,7 +312,7 @@ function Signup() {
                 <label>Phone</label>
               </div>
 
-              {/* PASSWORD */}
+
               <div className="input-group">
                 <div className="password-container">
                   <input
@@ -342,7 +334,7 @@ function Signup() {
                   </button>
                 </div>
 
-                {/* FIXED BAR */}
+
                 <div className="password-strength">
                   <div className="strength-track">
                     <div
@@ -356,7 +348,6 @@ function Signup() {
                 </div>
               </div>
 
-              {/* CONFIRM PASSWORD */}
               <div className="input-group">
                 <div className="password-container">
                   <input
@@ -396,9 +387,9 @@ function Signup() {
                 {loading ? <Loader /> : "Create Account"}
               </button>
 
-              <div className="signin-text">
+              <Link to="/login" className="signin-text">
                 Already have an account? <span>Sign In</span>
-              </div>
+              </Link>
             </form>
           </div>
         </section>

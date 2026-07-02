@@ -21,6 +21,12 @@ body {
   color: #0f172a;
 }
 
+/* Improve touch scrolling and momentum on mobile devices */
+html, body {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
 button {
   font-family: inherit;
 }

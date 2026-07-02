@@ -10,3 +10,8 @@ export const registerUser = async (payload) => {
 
   return response.data;
 };
+
+export const loginUser = async (payload) => {
+  const resopnse = await axios.post(`${BASE_URL}/login`, payload);
+  return resopnse.data;
+}

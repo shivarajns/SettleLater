@@ -4,6 +4,7 @@ import MainLayout from "./layouts/MainLayout";
 
 import Home from "./pages/Home/Home";
 import Signup from "./pages/Signup/Signup";
+import Login from "./pages/Login/Login";
 
 function App() {
   return (
@@ -23,6 +24,15 @@ function App() {
           element={
             <MainLayout>
               <Signup />
+            </MainLayout>
+          }
+        />
+
+        <Route
+          path="/login"
+          element={
+            <MainLayout>
+              <Login/>
             </MainLayout>
           }
         />
