@@ -8,17 +8,26 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 16);
+      const shouldScroll = window.scrollY > 16;
+
+      setScrolled(prev => {
+        if (prev === shouldScroll) return prev;
+        return shouldScroll;
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll, {
+      passive: true
+    });
 
+    return () =>
+      window.removeEventListener("scroll", handleScroll);
+  }, []);
   useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "";
+    // Lock body scroll when mobile nav is open, restore to auto when closed.
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = "auto";
     };
   }, [isOpen]);
 
@@ -50,7 +59,7 @@ function Navbar() {
           </button>
 
           <div className={`nav-menu ${isOpen ? "open" : ""}`} id="main-nav">
-            <a href="#product" className="nav-link" onClick={closeMenu}>
+            {/* <a href="#product" className="nav-link" onClick={closeMenu}>
               Product
             </a>
             <a href="#solutions" className="nav-link" onClick={closeMenu}>
@@ -61,12 +70,12 @@ function Navbar() {
             </a>
             <a href="#about" className="nav-link" onClick={closeMenu}>
               About
-            </a>
+            </a> */}
 
             <div className="nav-actions">
-              <button className="login-btn" onClick={closeMenu}>
+              <Link className="login-btn" to="/login" onClick={closeMenu}>
                 Login
-              </button>
+              </Link>
               {/* <button className="signup-btn" onClick={closeMenu}>
                 Get Started
               </button> */}
