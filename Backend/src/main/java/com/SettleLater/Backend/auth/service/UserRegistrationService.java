@@ -35,6 +35,12 @@ public class UserRegistrationService {
             return responseDTO;
         }
 
+        if (userRepository.existsByPhoneNumber(requestDTO.getPhoneNumber())){
+            RegisterResponseDTO responseDTO = new RegisterResponseDTO();
+            responseDTO.setMessage("Phone Number Already Register");
+            return responseDTO;
+        }
+
         User user = new User();
         user.setEmail(requestDTO.getEmail());
         String encodedPassword = passwordEncoder.encode(requestDTO.getPassword());
