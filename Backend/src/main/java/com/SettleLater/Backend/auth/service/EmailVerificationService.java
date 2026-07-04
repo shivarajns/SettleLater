@@ -1,7 +1,9 @@
 package com.SettleLater.Backend.auth.service;
 
 import com.SettleLater.Backend.auth.dto.EmailVerifyResponseDTO;
+import com.SettleLater.Backend.auth.dto.WeatherEmailVerifiedResponseDTO;
 import com.SettleLater.Backend.auth.exceptions.TokenNotFound;
+import com.SettleLater.Backend.auth.exceptions.UserNotFoundWithEmail;
 import com.SettleLater.Backend.auth.model.EmailVerificationToken;
 import com.SettleLater.Backend.auth.model.User;
 import com.SettleLater.Backend.auth.repository.EmailVerificationTokenRepository;
@@ -38,5 +40,17 @@ public class EmailVerificationService {
         responseDTO.setMessage("Email Verified");
 
         return responseDTO;
+    }
+
+    public WeatherEmailVerifiedResponseDTO checkIsEmailVerified(String email){
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(()-> new UserNotFoundWithEmail("User not found with this email"));
+
+        if(!user.isVerified()){
+            return new
+                    WeatherEmailVerifiedResponseDTO("Email is not Verified", false);
+        }
+
+        return new WeatherEmailVerifiedResponseDTO("Verification Success", true);
     }
 }
