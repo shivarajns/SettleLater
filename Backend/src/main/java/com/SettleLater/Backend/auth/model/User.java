@@ -36,7 +36,7 @@ public class User implements UserDetails {
     private String userName;
 
     @Column(name = "is_verified", nullable = false)
-    private boolean verified = false;
+    private boolean verified;
 
     @Column(name = "is_active", nullable = false)
     private boolean active = true;

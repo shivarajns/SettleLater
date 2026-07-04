@@ -1,9 +1,12 @@
+import AnimatedBackground from "../../components/Home/AnimatedBackground";
+import Hero from "../../components/Home/Hero";
+
 function Home() {
   return (
-    <div>
-      <h1>SettleLater</h1>
-      <p>Split expenses. Track dues. Settle later.</p>
-    </div>
+    <>
+      <AnimatedBackground />
+      <Hero/>
+    </>
   );
 }
 

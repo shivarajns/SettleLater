@@ -5,6 +5,7 @@ import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home/Home";
 import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
+import EmailVerification from "./pages/EmailVerification/EmailVerification"
 
 function App() {
   return (
@@ -12,6 +13,15 @@ function App() {
       <Routes>
         <Route
           path="/"
+          element={
+            <MainLayout>
+              <Home />
+            </MainLayout>
+          }
+        />
+
+        <Route
+          path="/home"
           element={
             <MainLayout>
               <Home />
@@ -33,6 +43,15 @@ function App() {
           element={
             <MainLayout>
               <Login/>
+            </MainLayout>
+          }
+        />
+
+        <Route
+          path="verify-email"
+          element={
+            <MainLayout>
+              <EmailVerification/>
             </MainLayout>
           }
         />
