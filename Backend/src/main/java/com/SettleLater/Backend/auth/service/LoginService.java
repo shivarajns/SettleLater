@@ -61,8 +61,6 @@ public class LoginService {
 
         }
 
-
-        System.out.println(user.isVerified());
         return new LoginResponseDTO("Login Success"
                 , accessToken, true);
     }

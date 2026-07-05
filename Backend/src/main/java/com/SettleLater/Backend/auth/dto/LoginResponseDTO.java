@@ -3,7 +3,7 @@ package com.SettleLater.Backend.auth.dto;
 public class LoginResponseDTO {
     private String message;
     private String token;
-    private boolean emailVerified;
+    private Boolean emailVerified;
 
     public LoginResponseDTO(String message, String token, Boolean emailVerified) {
         this.message = message;
