@@ -1,0 +1,427 @@
+:root {
+  --primary: #4f46e5;
+  --secondary: #2563eb;
+  --accent: #06b6d4;
+
+  --text: #0f172a;
+  --muted: #64748b;
+
+  --success: #10b981;
+  --error: #ef4444;
+
+  --card-bg: rgba(255, 255, 255, 0.75);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+
+
+.verify-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  overflow: hidden;
+  position: relative;
+}
+
+
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.orb1 {
+  width: 420px;
+  height: 420px;
+  background: rgba(79, 70, 229, 0.25);
+  top: -150px;
+  left: -120px;
+  animation: floatOrb1 10s ease-in-out infinite;
+}
+
+.orb2 {
+  width: 420px;
+  height: 420px;
+  background: rgba(6, 182, 212, 0.22);
+  bottom: -150px;
+  right: -120px;
+  animation: floatOrb2 12s ease-in-out infinite;
+}
+
+@keyframes floatOrb1 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(30px, 20px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes floatOrb2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-30px, -20px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+
+.ledger-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 900px;
+  height: 700px;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.ledger-svg {
+  width: 100%;
+  height: 100%;
+  animation: floatLedger 10s ease-in-out infinite;
+}
+
+@keyframes floatLedger {
+  0% {
+    transform: translateY(0px) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateY(-18px) rotate(1deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(-1deg);
+  }
+}
+
+
+
+.verify-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+
+
+.brand-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.logo-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+
+  background: linear-gradient(
+    135deg,
+    var(--secondary),
+    var(--primary),
+    var(--accent)
+  );
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+
+  padding: 14px;
+
+  box-shadow: 0 18px 40px rgba(79, 70, 229, 0.25);
+}
+
+.logo-box span {
+  height: 3px;
+  background: white;
+  border-radius: 20px;
+}
+
+.logo-wrapper h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.logo-wrapper h1 span {
+  color: var(--primary);
+}
+
+.brand-section h2 {
+  font-size: 2.8rem;
+  line-height: 1.1;
+  margin-bottom: 14px;
+  color: var(--text);
+}
+
+.brand-section p {
+  max-width: 520px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+
+.form-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+
+
+.verify-card {
+  width: 100%;
+  max-width: 520px;
+
+  background: var(--card-bg);
+  backdrop-filter: blur(24px);
+
+  border-radius: 28px;
+
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  padding: 40px;
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+
+  text-align: center;
+
+  animation: fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.mail-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.mail-svg {
+  width: 130px;
+  height: 130px;
+
+  animation: mailFloat 4s ease-in-out infinite;
+  filter: drop-shadow(
+    0 12px 25px rgba(79, 70, 229, 0.15)
+  );
+}
+
+@keyframes mailFloat {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+
+
+.verify-header h2 {
+  font-size: 2rem;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.verify-header p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.verify-note {
+  margin-top: 12px;
+  font-size: 0.95rem;
+}
+
+
+.verify-actions {
+  margin-top: 28px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: none;
+  cursor: pointer;
+
+  border-radius: 14px;
+
+  min-height: 56px;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  transition: all 0.3s ease;
+}
+
+/* PRIMARY */
+
+.primary-btn {
+  color: white;
+
+  background: linear-gradient(
+    135deg,
+    var(--secondary),
+    var(--primary),
+    var(--accent)
+  );
+}
+
+.primary-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(79, 70, 229, 0.25);
+}
+
+/* SECONDARY */
+
+.secondary-btn {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--primary);
+
+  border: 1px solid rgba(79, 70, 229, 0.15);
+}
+
+.secondary-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  background: white;
+}
+
+/* DISABLED */
+
+.primary-btn:disabled,
+.secondary-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+
+@media (max-width: 992px) {
+  .verify-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-section {
+    padding: 50px 30px;
+    text-align: center;
+  }
+
+  .logo-wrapper {
+    justify-content: center;
+  }
+
+  .brand-section h2 {
+    font-size: 2rem;
+  }
+
+  .brand-section p {
+    margin: 0 auto;
+  }
+
+  .verify-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .verify-card {
+    padding: 30px 24px;
+  }
+
+  .mail-svg {
+    width: 110px;
+    height: 110px;
+  }
+
+  .verify-header h2 {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .brand-section {
+    padding: 30px 20px;
+  }
+
+  .logo-wrapper h1 {
+    font-size: 2rem;
+  }
+
+  .brand-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .verify-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .verify-card {
+    padding: 24px 18px;
+  }
+
+  .mail-svg {
+    width: 90px;
+    height: 90px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    min-height: 52px;
+    font-size: 0.9rem;
+  }
+}

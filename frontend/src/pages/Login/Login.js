@@ -5,9 +5,14 @@ import Loader from "../../components/Loader/Loader";
 import Alert from "../../components/Alert/Alert";
 
 import { loginUser } from "../../api/authApi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 
 function Login() {
+
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
@@ -80,14 +85,24 @@ function Login() {
 
       const response = await loginUser(formData);
 
+      if (response?.emailVerified === false) {
+        navigate('/verify-email');
+      }
+
+      if(response?.emailVerified === true){
+        navigate('/home')
+      }
+
+
       setAlert({
         type: "success",
         message:
           response.message || "Login successful.",
       });
 
-      // Future:
-      // localStorage.setItem("token", response.token);
+
+      localStorage.setItem("token", response.token);
+      window.location.reload();
 
     } catch (error) {
       setAlert({
@@ -132,7 +147,7 @@ function Login() {
             strokeWidth="1"
           />
 
-          {[1,2,3,4,5,6,7,8,9].map((i) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
             <line
               key={i}
               x1="180"

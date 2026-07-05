@@ -350,3 +350,46 @@
     /* save space on very small screens */
   }
 }
+
+.logout-btn {
+  border: none;
+  cursor: pointer;
+  padding: 0.82rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.25s ease;
+
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: white;
+
+  box-shadow: 0 12px 28px rgba(220, 38, 38, 0.24);
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 16px 32px rgba(220, 38, 38, 0.3);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+.logout-btn:focus-visible {
+  outline: 2px solid rgba(220, 38, 38, 0.3);
+  outline-offset: 2px;
+}
+
+.login-btn,
+.signup-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.login-btn,
+.signup-btn,
+.logout-btn {
+  width: 100%;
+  justify-content: center;
+}

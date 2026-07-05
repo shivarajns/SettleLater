@@ -3,6 +3,7 @@ package com.SettleLater.Backend.Common.Configuration;
 import com.SettleLater.Backend.Security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
@@ -32,6 +33,9 @@ public class SecurityConfig {
                         UsernamePasswordAuthenticationFilter.class
                 )
                 .authorizeHttpRequests(auth -> auth
+
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
                         .requestMatchers(
                                 "/register",
                                 "/login",
@@ -41,6 +45,7 @@ public class SecurityConfig {
                         .permitAll()
                         .anyRequest()
                         .authenticated()
+
                 );
         return httpSecurity.build();
     }

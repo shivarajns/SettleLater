@@ -4,9 +4,12 @@ import "./Signup.css";
 import Loader from "../../components/Loader/Loader";
 import Alert from "../../components/Alert/Alert";
 import { registerUser } from "../../api/authApi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
+
+  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
@@ -168,6 +171,8 @@ function Signup() {
         password: false,
         confirmPassword: false,
       });
+
+      navigate("/verify-email")
     } catch (error) {
       setAlert({
         type: "error",

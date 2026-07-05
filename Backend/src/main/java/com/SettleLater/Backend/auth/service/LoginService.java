@@ -3,10 +3,13 @@ package com.SettleLater.Backend.auth.service;
 import com.SettleLater.Backend.auth.dto.LoginRequestDTO;
 import com.SettleLater.Backend.auth.dto.LoginResponseDTO;
 import com.SettleLater.Backend.auth.model.User;
+import com.SettleLater.Backend.auth.repository.EmailVerificationTokenRepository;
 import com.SettleLater.Backend.auth.repository.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.sql.SQLOutput;
 
 @Service
 public class LoginService {
@@ -20,6 +23,8 @@ public class LoginService {
         this.jwtService = jwtService;
     }
 
+
+
     public LoginResponseDTO login(LoginRequestDTO request){
         User user = userRepository.findByEmail(request.getEmail()).orElseThrow(
                 ()-> new UsernameNotFoundException("User Not found with Email.")
@@ -28,16 +33,22 @@ public class LoginService {
         if(!userRepository.existsByEmail(request.getEmail())){
             return new LoginResponseDTO(
                     "User Not Found With This Email.",
-                    "NA"
+                    null, null
+
             );
         }
 
-        if(!user.isVerified()){
+        String accessToken = jwtService.generateToken(
+                request.getEmail()
+        );
+
+        if(passwordEncoder.matches(request.getPassword(), user.getPassword()) && !user.isVerified()){
             return new LoginResponseDTO(
                     "Please verify your email before logging in.",
-                    "NA"
-            );
+                    accessToken, false);
         }
+
+
 
         if(!passwordEncoder.matches(
                 request.getPassword(),
@@ -45,16 +56,12 @@ public class LoginService {
         )){
             return new LoginResponseDTO(
                     "Wrong Credentials.",
-                    "NA"
+                     null, null
             );
 
         }
 
-        String accessToken = jwtService.generateToken(
-                request.getEmail()
-        );
-
         return new LoginResponseDTO("Login Success"
-                , accessToken);
+                , accessToken, true);
     }
 }
