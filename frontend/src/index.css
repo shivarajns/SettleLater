@@ -7,6 +7,10 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
@@ -19,6 +23,22 @@ body {
 
   background: #f8fafc;
   color: #0f172a;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+  position: relative;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+main {
+  overflow-x: hidden;
 }
 
 /* Improve touch scrolling and momentum on mobile devices */

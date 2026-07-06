@@ -115,6 +115,7 @@
 .hero-content {
   width: 100%;
 
+.hero-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
