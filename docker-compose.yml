@@ -1,0 +1,41 @@
+services:
+  app:
+    image: settlelater_backend
+    container_name: backend
+
+    ports:
+      - "8080:8080"
+
+    restart: on-failure
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/settlelater
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 9008
+
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8
+    container_name: database
+
+    environment:
+      MYSQL_ROOT_PASSWORD: 9008
+      MYSQL_DATABASE: settlelater
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-p9008" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    ports:
+      - "3307:3306"
+
+    restart: on-failure
+
+volumes:
+  mysql_data:

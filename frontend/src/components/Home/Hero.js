@@ -1,6 +1,7 @@
 import DashboardPreview from "./DashboardPreview";
 import "../../pages/Home/Home.css"
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Hero() {
 
@@ -60,13 +61,13 @@ function Hero() {
               </p>
 
               <div className="hero-actions">
-                <button className="primary-btn">
+                <Link className="primary-btn" to="/signup">
                   Get Started
-                </button>
+                </Link>
 
-                <button className="secondary-btn">
+                <Link className="secondary-btn" to="/login">
                   Login
-                </button>
+                </Link>
               </div>
             </>
           )}
