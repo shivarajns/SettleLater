@@ -1,0 +1,204 @@
+.sidebar {
+  width: 240px;
+  min-width: 240px;
+  height: 100vh;
+
+  background: #0f172a;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 20px 16px;
+}
+
+/* ================= LOGO ================= */
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  text-decoration: none;
+  margin-bottom: 32px;
+}
+
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    #4f46e5 0%,
+    #06b6d4 55%,
+    #8b5cf6 100%
+  );
+
+  box-shadow: 0 12px 30px rgba(79, 70, 229, 0.24);
+
+  position: relative;
+  overflow: hidden;
+  transform: rotate(8deg);
+}
+
+.brand-mark::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(255,255,255,.35);
+
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,.22),
+    rgba(255,255,255,.06)
+  );
+}
+
+.brand-mark-inner {
+  position: absolute;
+  inset: 11px;
+
+  border-radius: 10px;
+
+  background: rgba(255,255,255,.2);
+
+  transform: rotate(45deg);
+}
+
+.sidebar-brand-name {
+  display: block;
+  color: white;
+
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.sidebar-brand-tag {
+  display: block;
+
+  font-size: .68rem;
+  letter-spacing: .16em;
+
+  color: #94a3b8;
+}
+
+/* ================= NAVIGATION ================= */
+
+.sidebar-top {
+  flex: 1;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-link {
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0 14px;
+
+  border-radius: 12px;
+
+  color: #94a3b8;
+
+  text-decoration: none;
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+
+  transition: all .2s ease;
+}
+
+.sidebar-link:hover {
+  background: rgba(255,255,255,.06);
+  color: white;
+}
+
+.sidebar-link.active {
+  background: #1e293b;
+  color: white;
+}
+
+.sidebar-link span {
+  font-size: .95rem;
+  font-weight: 500;
+}
+
+/* ================= UPGRADE CARD ================= */
+
+.upgrade-card {
+  background: linear-gradient(
+    180deg,
+    #1e3a8a,
+    #1e40af
+  );
+
+  border-radius: 18px;
+
+  padding: 20px;
+
+  text-align: center;
+}
+
+.upgrade-icon {
+  width: 52px;
+  height: 52px;
+
+  margin: 0 auto 14px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,.15);
+
+  color: white;
+}
+
+.upgrade-card h4 {
+  color: white;
+
+  font-size: .9rem;
+  line-height: 1.5;
+
+  margin-bottom: 16px;
+}
+
+.upgrade-btn {
+  width: 100%;
+
+  border: none;
+
+  padding: 12px;
+
+  border-radius: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  background: white;
+  color: #1e3a8a;
+}
+
+.upgrade-btn:hover {
+  opacity: .95;
+}
+
+/* ================= LOGOUT ================= */
+
+.logout-btn {
+  width: 100%;
+}
