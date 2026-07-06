@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 import EmailVerification from "./pages/EmailVerification/EmailVerification"
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -55,6 +56,12 @@ function App() {
             </MainLayout>
           }
         />
+
+        <Route
+          path="/dashboard"
+          element={<Dashboard/>}
+        />
+
       </Routes>
     </BrowserRouter>
   );
