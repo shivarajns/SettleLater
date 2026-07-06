@@ -1,4 +1,4 @@
-import "../../pages/Home/home.css"
+import "../../pages/Home/Home.css"
 
 function AnimatedBackground() {
   return (
