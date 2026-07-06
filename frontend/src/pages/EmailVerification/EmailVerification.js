@@ -29,8 +29,6 @@ function EmailVerification() {
       const response =
         await checkEmailVerification();
 
-        console.log(response)
-
       setAlert({
         type: response.isVerified
           ? "success"
@@ -42,7 +40,7 @@ function EmailVerification() {
             : "Email verification is pending."),
       });
 
-      if (response.verified) {
+      if (response.isVerified) {
         navigate("/home");
       }
     } catch (error) {
