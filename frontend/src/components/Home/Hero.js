@@ -1,5 +1,5 @@
 import DashboardPreview from "./DashboardPreview";
-import "../../pages/Home/home.css"
+import "../../pages/Home/Home.css"
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
