@@ -2,14 +2,11 @@
   --primary: #4f46e5;
   --secondary: #2563eb;
   --accent: #06b6d4;
-
   --text: #0f172a;
   --muted: #64748b;
-
   --success: #10b981;
   --error: #ef4444;
-
-  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-bg: rgba(255, 255, 255, 0.78);
 }
 
 * {
@@ -19,16 +16,12 @@
   font-family: system-ui, -apple-system, sans-serif;
 }
 
-
-
 .verify-page {
   min-height: 100vh;
   background: #f8fafc;
   overflow: hidden;
   position: relative;
 }
-
-
 
 .bg-orb {
   position: absolute;
@@ -39,51 +32,34 @@
 }
 
 .orb1 {
-  width: 420px;
-  height: 420px;
+  width: 280px;
+  height: 280px;
   background: rgba(79, 70, 229, 0.25);
-  top: -150px;
-  left: -120px;
+  top: -100px;
+  left: -100px;
   animation: floatOrb1 10s ease-in-out infinite;
 }
 
 .orb2 {
-  width: 420px;
-  height: 420px;
+  width: 280px;
+  height: 280px;
   background: rgba(6, 182, 212, 0.22);
-  bottom: -150px;
-  right: -120px;
+  bottom: -100px;
+  right: -100px;
   animation: floatOrb2 12s ease-in-out infinite;
 }
 
 @keyframes floatOrb1 {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(30px, 20px);
-  }
-
-  100% {
-    transform: translate(0, 0);
-  }
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(20px, 18px); }
+  100% { transform: translate(0, 0); }
 }
 
 @keyframes floatOrb2 {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(-30px, -20px);
-  }
-
-  100% {
-    transform: translate(0, 0);
-  }
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-20px, -18px); }
+  100% { transform: translate(0, 0); }
 }
-
 
 .ledger-bg {
   position: absolute;
@@ -104,64 +80,43 @@
 }
 
 @keyframes floatLedger {
-  0% {
-    transform: translateY(0px) rotate(-1deg);
-  }
-
-  50% {
-    transform: translateY(-18px) rotate(1deg);
-  }
-
-  100% {
-    transform: translateY(0px) rotate(-1deg);
-  }
+  0% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-18px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(-1deg); }
 }
-
-
 
 .verify-layout {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr;
   min-height: 100vh;
   position: relative;
   z-index: 2;
 }
 
-
-
 .brand-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 80px;
+  padding: 2rem 1rem 1rem;
 }
 
 .logo-wrapper {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 28px;
+  gap: 0.85rem;
+  margin-bottom: 1.2rem;
 }
 
 .logo-box {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   border-radius: 18px;
-
-  background: linear-gradient(
-    135deg,
-    var(--secondary),
-    var(--primary),
-    var(--accent)
-  );
-
+  background: linear-gradient(135deg, var(--secondary), var(--primary), var(--accent));
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-
-  padding: 14px;
-
+  padding: 12px;
   box-shadow: 0 18px 40px rgba(79, 70, 229, 0.25);
 }
 
@@ -172,7 +127,7 @@
 }
 
 .logo-wrapper h1 {
-  font-size: 2.8rem;
+  font-size: 1.9rem;
   font-weight: 800;
   color: var(--text);
 }
@@ -182,145 +137,101 @@
 }
 
 .brand-section h2 {
-  font-size: 2.8rem;
+  font-size: 1.65rem;
   line-height: 1.1;
-  margin-bottom: 14px;
+  margin-bottom: 0.7rem;
   color: var(--text);
 }
 
 .brand-section p {
   max-width: 520px;
   color: var(--muted);
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   line-height: 1.7;
 }
-
 
 .form-section {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 0 1rem 2rem;
 }
-
-
 
 .verify-card {
   width: 100%;
   max-width: 520px;
-
   background: var(--card-bg);
   backdrop-filter: blur(24px);
-
-  border-radius: 28px;
-
+  border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.6);
-
-  padding: 40px;
-
+  padding: 1.25rem;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
-
   text-align: center;
-
   animation: fadeUp 0.8s ease;
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
 
 .mail-icon-wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 1rem;
 }
 
 .mail-svg {
-  width: 130px;
-  height: 130px;
-
+  width: 100px;
+  height: 100px;
   animation: mailFloat 4s ease-in-out infinite;
-  filter: drop-shadow(
-    0 12px 25px rgba(79, 70, 229, 0.15)
-  );
+  filter: drop-shadow(0 12px 25px rgba(79, 70, 229, 0.15));
 }
 
 @keyframes mailFloat {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
 }
 
-
-
 .verify-header h2 {
-  font-size: 2rem;
+  font-size: 1.4rem;
   color: var(--text);
-  margin-bottom: 12px;
+  margin-bottom: 0.6rem;
 }
 
 .verify-header p {
   color: var(--muted);
   line-height: 1.7;
-}
-
-.verify-note {
-  margin-top: 12px;
   font-size: 0.95rem;
 }
 
+.verify-note {
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+}
 
 .verify-actions {
-  margin-top: 28px;
-
+  margin-top: 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 0.8rem;
 }
 
 .primary-btn,
 .secondary-btn {
   border: none;
   cursor: pointer;
-
   border-radius: 14px;
-
-  min-height: 56px;
-
+  min-height: 52px;
   font-size: 0.95rem;
   font-weight: 700;
-
   transition: all 0.3s ease;
 }
 
-/* PRIMARY */
-
 .primary-btn {
   color: white;
-
-  background: linear-gradient(
-    135deg,
-    var(--secondary),
-    var(--primary),
-    var(--accent)
-  );
+  background: linear-gradient(135deg, var(--secondary), var(--primary), var(--accent));
 }
 
 .primary-btn:hover:not(:disabled) {
@@ -328,12 +239,9 @@
   box-shadow: 0 12px 25px rgba(79, 70, 229, 0.25);
 }
 
-/* SECONDARY */
-
 .secondary-btn {
   background: rgba(255, 255, 255, 0.9);
   color: var(--primary);
-
   border: 1px solid rgba(79, 70, 229, 0.15);
 }
 
@@ -342,86 +250,54 @@
   background: white;
 }
 
-/* DISABLED */
-
 .primary-btn:disabled,
 .secondary-btn:disabled {
   opacity: 0.75;
   cursor: not-allowed;
 }
 
-
-@media (max-width: 992px) {
+@media (min-width: 768px) {
   .verify-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
   }
 
   .brand-section {
-    padding: 50px 30px;
-    text-align: center;
+    padding: 3.5rem 2.5rem;
+    text-align: left;
   }
 
   .logo-wrapper {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .brand-section h2 {
     font-size: 2rem;
   }
 
-  .brand-section p {
-    margin: 0 auto;
+  .form-section {
+    padding: 2rem 2.5rem;
   }
 
   .verify-card {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .verify-card {
-    padding: 30px 24px;
+    padding: 2rem;
   }
 
   .mail-svg {
-    width: 110px;
-    height: 110px;
-  }
-
-  .verify-header h2 {
-    font-size: 1.7rem;
+    width: 120px;
+    height: 120px;
   }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 1024px) {
+  .verify-layout {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+
   .brand-section {
-    padding: 30px 20px;
-  }
-
-  .logo-wrapper h1 {
-    font-size: 2rem;
+    padding: 4rem 4rem;
   }
 
   .brand-section h2 {
-    font-size: 1.6rem;
-  }
-
-  .verify-header h2 {
-    font-size: 1.5rem;
-  }
-
-  .verify-card {
-    padding: 24px 18px;
-  }
-
-  .mail-svg {
-    width: 90px;
-    height: 90px;
-  }
-
-  .primary-btn,
-  .secondary-btn {
-    min-height: 52px;
-    font-size: 0.9rem;
+    font-size: 2.6rem;
   }
 }
