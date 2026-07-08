@@ -89,8 +89,10 @@ function Login() {
         navigate('/verify-email');
       }
 
-      if(response?.emailVerified === true){
+      if (response?.emailVerified === true) {
         navigate('/home')
+        localStorage.setItem("token", response.token);
+        window.location.reload();
       }
 
 
@@ -99,10 +101,6 @@ function Login() {
         message:
           response.message || "Login successful.",
       });
-
-
-      localStorage.setItem("token", response.token);
-      window.location.reload();
 
     } catch (error) {
       setAlert({

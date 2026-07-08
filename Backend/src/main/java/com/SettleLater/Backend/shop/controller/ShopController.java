@@ -39,7 +39,7 @@ public class ShopController {
     ) {
 
         String userId = authentication.getName();
-
+        System.out.println(userId);
         List<ShopResponseDTO> shops = shopService.getShopsByUserId(userId);
 
         return ResponseEntity.ok(shops);

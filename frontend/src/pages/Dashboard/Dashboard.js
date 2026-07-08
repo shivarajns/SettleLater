@@ -2,11 +2,12 @@
 import DashNavbar from "../../components/DashboardNavbar/DashNavbar"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import DashboardLayout from "../../layouts/DashboardLayout/DashboardLayout"
+import MyShopsSection from "../../components/Shop/MyShopsSection/MyShopsSection"
 
 function Dashboard() {
     return (
         <DashboardLayout>
-            <h1>Dashboard</h1>
+            <MyShopsSection/>
         </DashboardLayout>
     )
 }
