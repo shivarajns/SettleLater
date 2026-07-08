@@ -4,8 +4,12 @@ import { Plus, MapPin, Store } from "lucide-react";
 
 import CreateShopModal from "../CreateShopModal/CreateShopModal";
 import { getAllShops } from "../ShopService";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function MyShopsSection() {
+
+  const navigate = useNavigate();
   const [shops, setShops] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,6 +18,11 @@ function MyShopsSection() {
 
   const [showModal, setShowModal] =
     useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   const loadShops = async () => {
     try {
@@ -33,7 +42,11 @@ function MyShopsSection() {
         );
       }
     } catch (error) {
-      console.error(error);
+      console.log("Error Object:", error);
+      if (!error?.response?.data?.validToken) {
+        handleLogout();
+      }
+
     } finally {
       setLoading(false);
     }
@@ -141,12 +154,11 @@ function MyShopsSection() {
                     key={
                       shop.shopId
                     }
-                    className={`shop-card ${
-                      selectedShop ===
+                    className={`shop-card ${selectedShop ===
                       shop.shopId
-                        ? "active"
-                        : ""
-                    }`}
+                      ? "active"
+                      : ""
+                      }`}
                     onClick={() =>
                       setSelectedShop(
                         shop.shopId
@@ -166,10 +178,10 @@ function MyShopsSection() {
 
                       {selectedShop ===
                         shop.shopId && (
-                        <span className="active-badge">
-                          Active
-                        </span>
-                      )}
+                          <span className="active-badge">
+                            Active
+                          </span>
+                        )}
 
                     </div>
 
@@ -210,11 +222,10 @@ function MyShopsSection() {
                       </span>
 
                       <span
-                        className={`status ${
-                          shop.active
-                            ? "online"
-                            : "offline"
-                        }`}
+                        className={`status ${shop.active
+                          ? "online"
+                          : "offline"
+                          }`}
                       >
                         {shop.active
                           ? "Active"

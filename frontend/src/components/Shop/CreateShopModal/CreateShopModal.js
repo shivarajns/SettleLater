@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./CreateShopModal.css";
 import { X } from "lucide-react";
 import { createShop } from "../ShopService";
+import { useNavigate } from "react-router-dom";
 
 function CreateShopModal({
   isOpen,
@@ -23,6 +24,8 @@ function CreateShopModal({
     currency: "INR",
   };
 
+  const navigate = useNavigate();
+
   const [formData, setFormData] =
     useState(initialForm);
 
@@ -33,6 +36,8 @@ function CreateShopModal({
     useState({});
 
   if (!isOpen) return null;
+
+  
 
   const handleChange = (e) => {
     setFormData({
@@ -114,6 +119,8 @@ function CreateShopModal({
         onClose();
       } catch (error) {
         console.error(error);
+        navigate("/login")
+
       } finally {
         setLoading(false);
       }

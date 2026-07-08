@@ -91,16 +91,26 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             String message
     ) throws IOException {
 
+        response.setHeader(
+                "Access-Control-Allow-Origin",
+                "http://localhost:3000"
+        );
+
+        response.setHeader(
+                "Access-Control-Allow-Credentials",
+                "true"
+        );
+
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType("application/json");
 
         String json = """
-            {
-                "validToken": false,
-                "error": "%s",
-                "message": "%s"
-            }
-            """.formatted(error, message);
+        {
+            "validToken": false,
+            "error": "%s",
+            "message": "%s"
+        }
+        """.formatted(error, message);
 
         response.getWriter().write(json);
     }
