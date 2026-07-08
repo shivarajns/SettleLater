@@ -2,6 +2,7 @@
   display: flex;
   min-height: 100vh;
   background: #f8fafc;
+  position: relative;
 }
 
 .dashboard-main {
@@ -15,4 +16,29 @@
   flex: 1;
   padding: 24px;
   overflow-y: auto;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.55);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 900px) {
+  .dashboard-content {
+    padding: 16px;
+  }
+
+  .dashboard-layout.sidebar-open .sidebar {
+    transform: translateX(0);
+  }
 }

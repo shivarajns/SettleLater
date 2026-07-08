@@ -21,7 +21,7 @@ function MyShopsSection() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/sessionexpired");
   };
 
   const loadShops = async () => {
