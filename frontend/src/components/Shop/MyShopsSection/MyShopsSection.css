@@ -1,0 +1,324 @@
+.shops-section {
+  margin-bottom: 32px;
+}
+
+
+.shops-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 24px;
+}
+
+.shops-header h2 {
+  margin: 0;
+  color: #0f172a;
+
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.shops-header p {
+  margin-top: 4px;
+  color: #64748b;
+}
+
+.add-shop-btn {
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+
+  padding: 0 18px;
+
+  border-radius: 12px;
+
+  background: #4f46e5;
+  color: white;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.add-shop-btn:hover {
+  opacity: .95;
+}
+
+
+.shops-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(
+        280px,
+        1fr
+      )
+    );
+
+  gap: 20px;
+}
+
+
+.shop-card {
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 20px;
+
+  padding: 20px;
+
+  cursor: pointer;
+
+  transition: .25s ease;
+}
+
+.shop-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 25px
+    rgba(
+      15,
+      23,
+      42,
+      .08
+    );
+}
+
+.shop-card.active {
+  border: 2px solid #4f46e5;
+
+  box-shadow:
+    0 12px 30px
+    rgba(
+      79,
+      70,
+      229,
+      .15
+    );
+}
+
+
+.shop-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 18px;
+}
+
+.shop-icon {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    rgba(
+      79,
+      70,
+      229,
+      .08
+    );
+
+  color: #4f46e5;
+}
+
+.active-badge {
+  padding: 4px 10px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(
+      34,
+      197,
+      94,
+      .12
+    );
+
+  color: #16a34a;
+
+  font-size: .75rem;
+  font-weight: 600;
+}
+
+
+.shop-card h3 {
+  margin: 0;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  color: #0f172a;
+}
+
+.business-type {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #64748b;
+
+  font-size: .9rem;
+}
+
+.shop-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-top: 14px;
+
+  color: #64748b;
+
+  font-size: .88rem;
+}
+
+
+.shop-footer {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 20px;
+
+  padding-top: 14px;
+
+  border-top: 1px solid #f1f5f9;
+}
+
+.status.online {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.status.offline {
+  color: #dc2626;
+}
+
+
+.add-card {
+  border: 2px dashed #cbd5e1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+
+  min-height: 210px;
+
+  color: #64748b;
+}
+
+.add-card:hover {
+  border-color: #4f46e5;
+  color: #4f46e5;
+}
+
+
+.empty-state {
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 48px;
+
+  text-align: center;
+
+  border: 1px solid #e2e8f0;
+}
+
+.empty-state svg {
+  color: #64748b;
+}
+
+.empty-state h3 {
+  margin-top: 18px;
+}
+
+.empty-state p {
+  color: #64748b;
+}
+
+.empty-add-btn {
+  margin-top: 20px;
+
+  border: none;
+
+  background: #4f46e5;
+  color: white;
+
+  padding: 12px 20px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+}
+
+
+.skeleton-card {
+  height: 220px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f1f5f9 25%,
+      #e2e8f0 50%,
+      #f1f5f9 75%
+    );
+
+  background-size:
+    200% 100%;
+
+  animation:
+    shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position:
+      200% 0;
+  }
+
+  100% {
+    background-position:
+      -200% 0;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .shops-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .shops-grid {
+    display: flex;
+    overflow-x: auto;
+
+    padding-bottom: 10px;
+  }
+
+  .shop-card {
+    min-width: 280px;
+  }
+}

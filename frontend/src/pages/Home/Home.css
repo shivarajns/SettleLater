@@ -105,17 +105,15 @@
 
 .hero-section {
   min-height: 100vh;
-
   display: flex;
   align-items: center;
-
   padding: 0 8%;
 }
 
 .hero-content {
   width: 100%;
-}
-.hero-section {
+  max-width: 1400px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -123,7 +121,7 @@
 }
 
 .hero-left {
-  flex: 1;
+  flex: 1 1 0;
   max-width: 620px;
 }
 
@@ -210,13 +208,11 @@
 }
 
 .dashboard-preview {
-  flex: 1;
-
+  flex: 1 1 420px;
   position: relative;
-
   height: 500px;
-
   min-width: 420px;
+  max-width: 520px;
 }
 
 .glass-card {
@@ -288,6 +284,7 @@
   .hero-content {
     flex-direction: column;
     text-align: center;
+    gap: 2.5rem;
   }
 
   .hero-actions {

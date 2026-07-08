@@ -67,9 +67,11 @@ public class ShopServiceImpl implements ShopService {
 
     //GET SHOPS BY USER
     @Override
-    public List<ShopResponseDTO> getShopsByUserId(String userId) {
-
-        return shopRepository.findByUser_UserId(userId)
+    public List<ShopResponseDTO> getShopsByUserId(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        
+        return shopRepository.findByUser_UserId(user.getUserId())
                 .stream()
                 .map(this::mapToResponse)
                 .collect(Collectors.toList());
