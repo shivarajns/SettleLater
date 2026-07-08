@@ -13,7 +13,13 @@ import {
   Crown,
 } from "lucide-react";
 
-function Sidebar() {
+function Sidebar({ onNavItemClick }) {
+  const handleNavClick = () => {
+    if (onNavItemClick) {
+      onNavItemClick();
+    }
+  };
+
   return (
     <aside className="sidebar">
       <div className="sidebar-top">
@@ -38,47 +44,47 @@ function Sidebar() {
         {/* NAVIGATION */}
         <nav className="sidebar-nav">
 
-          <NavLink to="/dashboard" className="sidebar-link">
+          <NavLink to="/dashboard" className="sidebar-link" onClick={handleNavClick}>
             <LayoutDashboard size={18} />
             <span>Dashboard</span>
           </NavLink>
 
-          <NavLink to="/shops" className="sidebar-link">
+          <NavLink to="/shops" className="sidebar-link" onClick={handleNavClick}>
             <Store size={18} />
             <span>Shops</span>
           </NavLink>
 
-          <NavLink to="/customers" className="sidebar-link">
+          <NavLink to="/customers" className="sidebar-link" onClick={handleNavClick}>
             <Users size={18} />
             <span>Customers</span>
           </NavLink>
 
-          <NavLink to="/transactions" className="sidebar-link">
+          <NavLink to="/transactions" className="sidebar-link" onClick={handleNavClick}>
             <ArrowLeftRight size={18} />
             <span>Transactions</span>
           </NavLink>
 
-          <NavLink to="/reminders" className="sidebar-link">
+          <NavLink to="/reminders" className="sidebar-link" onClick={handleNavClick}>
             <Bell size={18} />
             <span>Reminders</span>
           </NavLink>
 
-          <NavLink to="/reports" className="sidebar-link">
+          <NavLink to="/reports" className="sidebar-link" onClick={handleNavClick}>
             <BarChart3 size={18} />
             <span>Reports</span>
           </NavLink>
 
-          <NavLink to="/settings" className="sidebar-link">
+          <NavLink to="/settings" className="sidebar-link" onClick={handleNavClick}>
             <Settings size={18} />
             <span>Settings</span>
           </NavLink>
 
-          <NavLink to="/profile" className="sidebar-link">
+          <NavLink to="/profile" className="sidebar-link" onClick={handleNavClick}>
             <User size={18} />
             <span>Profile</span>
           </NavLink>
 
-          <button className="sidebar-link logout-btn">
+          <button type="button" className="sidebar-link logout-btn" onClick={handleNavClick}>
             <LogOut size={18} />
             <span>Logout</span>
           </button>

@@ -1,11 +1,22 @@
 import "./DashNavbar.css";
-import { Bell } from "lucide-react";
+import { Bell, Menu, X } from "lucide-react";
 
-function DashNavbar() {
+function DashNavbar({ onMenuToggle, isSidebarOpen, isMobileView }) {
   return (
     <header className="dash-navbar">
 
-      <div />
+      <div className="dash-navbar-left">
+        {isMobileView && (
+          <button
+            type="button"
+            className="mobile-menu-btn"
+            aria-label={isSidebarOpen ? "Close sidebar" : "Open sidebar"}
+            onClick={onMenuToggle}
+          >
+            {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        )}
+      </div>
 
       <div className="dash-navbar-right">
 

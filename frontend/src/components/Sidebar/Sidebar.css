@@ -10,6 +10,7 @@
   justify-content: space-between;
 
   padding: 20px 16px;
+  transition: transform 0.25s ease;
 }
 
 /* ================= LOGO ================= */
@@ -201,4 +202,15 @@
 
 .logout-btn {
   width: 100%;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    transform: translateX(-100%);
+    box-shadow: 0 20px 50px rgba(2, 6, 23, 0.35);
+  }
 }

@@ -10,12 +10,38 @@
   justify-content: space-between;
 
   padding: 0 28px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.dash-navbar-left {
+  display: flex;
+  align-items: center;
+  min-width: 48px;
 }
 
 .dash-navbar-right {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.mobile-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: #f8fafc;
+  border-radius: 12px;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+.mobile-menu-btn:hover {
+  background: #e2e8f0;
 }
 
 .notification-btn {
@@ -92,4 +118,14 @@
 .profile-info span {
   font-size: 12px;
   color: #64748b;
+}
+
+@media (max-width: 900px) {
+  .dash-navbar {
+    padding: 0 16px;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
 }

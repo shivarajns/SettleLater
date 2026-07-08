@@ -7,6 +7,7 @@ import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 import EmailVerification from "./pages/EmailVerification/EmailVerification"
 import Dashboard from "./pages/Dashboard/Dashboard";
+import SessionExpired from "./components/sessionExpired/SessionExpired";
 
 function App() {
   return (
@@ -60,6 +61,13 @@ function App() {
         <Route
           path="/dashboard"
           element={<Dashboard/>}
+        />
+
+        <Route
+          path="/sessionexpired"
+          element={
+            <SessionExpired/>
+          }
         />
 
       </Routes>

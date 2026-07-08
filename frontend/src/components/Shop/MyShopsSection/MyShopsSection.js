@@ -4,8 +4,11 @@ import { Plus, MapPin, Store } from "lucide-react";
 
 import CreateShopModal from "../CreateShopModal/CreateShopModal";
 import { getAllShops } from "../ShopService";
+import { useNavigate } from "react-router-dom";
 
 function MyShopsSection() {
+
+  const navigate = useNavigate();
   const [shops, setShops] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,6 +17,11 @@ function MyShopsSection() {
 
   const [showModal, setShowModal] =
     useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/sessionexpired");
+  };
 
   const loadShops = async () => {
     try {
@@ -33,7 +41,16 @@ function MyShopsSection() {
         );
       }
     } catch (error) {
-      console.error(error);
+      console.log("Error Object:", error);
+      if (!error?.response?.data?.validToken) {
+        handleLogout();
+      }
+
+      console.log("Error Object:", error);
+      if (!error?.response?.data?.validToken) {
+        handleLogout();
+      }
+
     } finally {
       setLoading(false);
     }
@@ -134,118 +151,53 @@ function MyShopsSection() {
         {!loading &&
           shops.length > 0 && (
             <div className="shops-grid">
-
-              {shops.map(
-                (shop) => (
-                  <div
-                    key={
-                      shop.shopId
-                    }
-                    className={`shop-card ${
-                      selectedShop ===
-                      shop.shopId
-                        ? "active"
-                        : ""
-                    }`}
-                    onClick={() =>
-                      setSelectedShop(
-                        shop.shopId
-                      )
-                    }
-                  >
-
-                    <div className="shop-top">
-
-                      <div className="shop-icon">
-                        <Store
-                          size={
-                            20
-                          }
-                        />
-                      </div>
-
-                      {selectedShop ===
-                        shop.shopId && (
-                        <span className="active-badge">
-                          Active
-                        </span>
-                      )}
-
+              {shops.map((shop) => (
+                <div
+                  key={shop.shopId}
+                  className={`shop-card ${selectedShop === shop.shopId ? "active" : ""}`}
+                  onClick={() => setSelectedShop(shop.shopId)}
+                >
+                  <div className="shop-top">
+                    <div className="shop-icon">
+                      <Store size={20} />
                     </div>
 
-                    <h3>
-                      {shop.name}
-                    </h3>
-
-                    <span className="business-type">
-                      {
-                        shop.businessType
-                      }
-                    </span>
-
-                    <div className="shop-location">
-
-                      <MapPin
-                        size={
-                          14
-                        }
-                      />
-
-                      <span>
-                        {shop.city}
-                        ,{" "}
-                        {
-                          shop.state
-                        }
-                      </span>
-
-                    </div>
-
-                    <div className="shop-footer">
-
-                      <span>
-                        {
-                          shop.currency
-                        }
-                      </span>
-
-                      <span
-                        className={`status ${
-                          shop.active
-                            ? "online"
-                            : "offline"
-                        }`}
-                      >
-                        {shop.active
-                          ? "Active"
-                          : "Inactive"}
-                      </span>
-
-                    </div>
-
+                    {selectedShop === shop.shopId && (
+                      <span className="active-badge">Active</span>
+                    )}
                   </div>
-                )
-              )}
+
+                  <h3>{shop.name}</h3>
+
+                  <span className="business-type">{shop.businessType}</span>
+
+                  <div className="shop-location">
+                    <MapPin size={14} />
+                    <span>
+                      {shop.city}, {shop.state}
+                    </span>
+                  </div>
+
+                  <div className="shop-footer">
+                    <span>{shop.currency}</span>
+
+                    <span className={`status ${shop.active ? "online" : "offline"}`}>
+                      {shop.active ? "Active" : "Inactive"}
+                    </span>
+                  </div>
+                </div>
+              ))}
 
               {/* Add Shop Card */}
 
               <div
                 className="shop-card add-card"
-                onClick={() =>
-                  setShowModal(
-                    true
-                  )
-                }
+                onClick={() => setShowModal(true)}
               >
-
                 <Plus size={28} />
 
-                <span>
-                  Add New Shop
-                </span>
-
+                <span>Add New Shop</span>
               </div>
-
             </div>
           )}
 
