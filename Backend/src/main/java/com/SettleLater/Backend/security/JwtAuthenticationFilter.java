@@ -1,4 +1,4 @@
-package com.SettleLater.Backend.Security;
+package com.SettleLater.Backend.security;
 
 import com.SettleLater.Backend.auth.service.CustomUserDetailsService;
 import com.SettleLater.Backend.auth.service.JwtService;

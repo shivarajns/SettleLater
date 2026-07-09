@@ -1,4 +1,4 @@
-package com.SettleLater.Backend.Common.ApiErrorResponse;
+package com.SettleLater.Backend.common.ApiErrorResponse;
 
 import java.time.LocalDateTime;
 
