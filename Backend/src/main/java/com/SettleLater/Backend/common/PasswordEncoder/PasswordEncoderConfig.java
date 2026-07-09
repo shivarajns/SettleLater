@@ -1,4 +1,4 @@
-package com.SettleLater.Backend.Common.PasswordEncoder;
+package com.SettleLater.Backend.common.PasswordEncoder;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

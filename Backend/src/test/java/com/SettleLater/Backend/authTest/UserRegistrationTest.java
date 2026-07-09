@@ -1,6 +1,6 @@
 package com.SettleLater.Backend.authTest;
 
-import com.SettleLater.Backend.Common.EmailSender.EmailSenderService;
+import com.SettleLater.Backend.common.EmailSender.EmailSenderService;
 import com.SettleLater.Backend.auth.dto.RegisterRequestDTO;
 import com.SettleLater.Backend.auth.dto.RegisterResponseDTO;
 import com.SettleLater.Backend.auth.model.EmailVerificationToken;

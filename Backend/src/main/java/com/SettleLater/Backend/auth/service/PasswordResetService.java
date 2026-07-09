@@ -1,6 +1,6 @@
 package com.SettleLater.Backend.auth.service;
 
-import com.SettleLater.Backend.Common.EmailSender.EmailSenderService;
+import com.SettleLater.Backend.common.EmailSender.EmailSenderService;
 import com.SettleLater.Backend.auth.dto.PasswordResetRequestDTO;
 import com.SettleLater.Backend.auth.dto.PasswordResetResponseDTO;
 import com.SettleLater.Backend.auth.model.User;

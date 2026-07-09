@@ -1,6 +1,6 @@
-package com.SettleLater.Backend.Common.Configuration;
+package com.SettleLater.Backend.common.Configuration;
 
-import com.SettleLater.Backend.Security.JwtAuthenticationFilter;
+import com.SettleLater.Backend.security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
