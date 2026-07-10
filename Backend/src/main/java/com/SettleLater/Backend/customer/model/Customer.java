@@ -44,6 +44,7 @@ public class Customer {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shop_id",
                 nullable = false,
+                updatable = false,
                 referencedColumnName = "shop_id",
                 foreignKey = @ForeignKey(name = "fk_customer_shop")
     )

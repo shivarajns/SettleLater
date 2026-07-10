@@ -1,4 +1,4 @@
-package com.SettleLater.Backend.common.ApiErrorResponse;
+package com.SettleLater.Backend.common.ApiResponse;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
