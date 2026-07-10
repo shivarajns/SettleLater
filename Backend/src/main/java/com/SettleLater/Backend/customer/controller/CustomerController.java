@@ -2,6 +2,7 @@ package com.SettleLater.Backend.customer.controller;
 
 import com.SettleLater.Backend.common.ApiResponse.ApiResponseDTO;
 import com.SettleLater.Backend.customer.dto.CreateCustomerDTO;
+import com.SettleLater.Backend.customer.dto.CustomerListResponseDTO;
 import com.SettleLater.Backend.customer.dto.CustomerResponseDTO;
 import com.SettleLater.Backend.customer.service.CustomerService;
 import jakarta.validation.Valid;
@@ -28,5 +29,16 @@ public class CustomerController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(response);
+    }
+
+    @GetMapping("/{shopId}/customer")
+    public ResponseEntity<ApiResponseDTO<CustomerListResponseDTO>> getShopCustomers(
+            @PathVariable String shopId,
+            @RequestParam int page,
+            @RequestParam int size
+    ) {
+        ApiResponseDTO<CustomerListResponseDTO> response = customerService.getCustomers(shopId, page, size);
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }
