@@ -8,6 +8,7 @@ import Login from "./pages/Login/Login";
 import EmailVerification from "./pages/EmailVerification/EmailVerification"
 import Dashboard from "./pages/Dashboard/Dashboard";
 import SessionExpired from "./components/sessionExpired/SessionExpired";
+import ProtectedRoute from "./routs/ProtectedRoute";
 
 function App() {
   return (
@@ -44,7 +45,7 @@ function App() {
           path="/login"
           element={
             <MainLayout>
-              <Login/>
+              <Login />
             </MainLayout>
           }
         />
@@ -53,20 +54,27 @@ function App() {
           path="verify-email"
           element={
             <MainLayout>
-              <EmailVerification/>
+              <EmailVerification />
             </MainLayout>
           }
         />
 
         <Route
           path="/dashboard"
-          element={<Dashboard/>}
+          element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>  
+        
+        }
         />
+
+
 
         <Route
           path="/sessionexpired"
           element={
-            <SessionExpired/>
+            <SessionExpired />
           }
         />
 
