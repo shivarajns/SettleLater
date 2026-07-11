@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { Loader } from "lucide-react";
 
 const ProtectedRoute = ({ children }) => {
 
@@ -9,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
     } = useAuth();
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loader/>;
     }
 
     if (!isAuthenticated) {

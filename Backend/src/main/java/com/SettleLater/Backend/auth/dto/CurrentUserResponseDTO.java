@@ -10,4 +10,5 @@ public class CurrentUserResponseDTO {
     private String userId;
     private String email;
     private Boolean isVerified;
+    private String name;
 }
