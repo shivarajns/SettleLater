@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./DashboardLayout.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import DashNavbar from "../../components/DashboardNavbar/DashNavbar";
+import DashNavbar from "../../components/Dashboard/DashNavbar";
 
 function DashboardLayout({ children }) {
   const [isMobileView, setIsMobileView] = useState(() => {

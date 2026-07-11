@@ -36,3 +36,18 @@ export const resendVerificationEmail = async () => {
 
   return response.data;
 }
+
+export const getCurrentUser = async () => {
+    const token = localStorage.getItem("token");
+
+    const response = await axios.get(
+        `${BASE_URL}/api/auth/me`,
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    return response.data;
+};
