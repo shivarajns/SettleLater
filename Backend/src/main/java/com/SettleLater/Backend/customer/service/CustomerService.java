@@ -12,4 +12,6 @@ public interface CustomerService {
     ApiResponseDTO<CustomerResponseDTO> createCustomer(String shopId, CreateCustomerDTO request);
 
     ApiResponseDTO<CustomerListResponseDTO> getCustomers(String shopId, int page, int size);
+
+    ApiResponseDTO<CustomerListResponseDTO> getAllCustomersOfTheUser(String userId, int page, int size);
 }

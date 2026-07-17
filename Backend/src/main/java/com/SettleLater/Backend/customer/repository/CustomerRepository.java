@@ -18,4 +18,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     boolean existsByShop_ShopIdAndPhone(String shopId, String phone);
 
     Page<Customer> findByShop_ShopIdAndIsActiveTrue(String shopId, Pageable pageable);
+
+    Page<Customer> findByShop_User_Email(String shopUserEmail, Pageable pageable);
 }

@@ -112,4 +112,48 @@ public class CustomerServiceImp implements CustomerService {
                 .data(response)
                 .build();
     }
+
+    @Override
+    public ApiResponseDTO<CustomerListResponseDTO> getAllCustomersOfTheUser(String email, int page, int size) {
+        Pageable pageable = PageRequest.of(
+                page,
+                size,
+                Sort.by("createdAt").descending()
+        );
+
+        Page<Customer> customerPage = customerRepository.findByShop_User_Email(
+                email,
+                pageable
+        );
+
+        List<CustomerResponseDTO> customer = customerPage
+                .getContent()
+                .stream()
+                .map(c -> CustomerResponseDTO.builder()
+                        .customerId(c.getCustomerId())
+                        .customerName(c.getCustomerName())
+                        .phone(c.getPhone())
+                        .email(c.getEmail())
+                        .address(c.getAddress())
+                        .isActive(c.isActive())
+                        .createdAt(c.getCreatedAt())
+                        .build())
+                        .toList();
+
+        CustomerListResponseDTO response =
+                CustomerListResponseDTO.builder()
+                        .customers(customer)
+                        .currentPage(customerPage.getNumber())
+                        .totalPages(customerPage.getTotalPages())
+                        .totalElements(customerPage.getTotalElements())
+                        .hasNext(customerPage.hasNext())
+                        .hasPrevious(customerPage.hasPrevious())
+                        .build();
+
+        return ApiResponseDTO.<CustomerListResponseDTO>builder()
+                .success(true)
+                .message("Customers Fetched Successfully")
+                .data(response)
+                .build();
+   }
 }
