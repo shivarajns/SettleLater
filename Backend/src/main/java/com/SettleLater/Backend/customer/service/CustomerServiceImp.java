@@ -92,6 +92,7 @@ public class CustomerServiceImp implements CustomerService {
                                 .address(c.getAddress())
                                 .isActive(c.isActive())
                                 .createdAt(c.getCreatedAt())
+                                .ShopName(c.getShop().getName())
                                 .build()
                         ).toList();
 
@@ -137,6 +138,7 @@ public class CustomerServiceImp implements CustomerService {
                         .address(c.getAddress())
                         .isActive(c.isActive())
                         .createdAt(c.getCreatedAt())
+                        .ShopName(c.getShop().getName())
                         .build())
                         .toList();
 

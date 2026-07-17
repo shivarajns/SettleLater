@@ -222,6 +222,8 @@
 .shop-row-actions {
   display: flex;
   gap: 10px;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 .view-btn,
@@ -230,17 +232,27 @@
   border-radius: 12px;
   border: 1px solid #dbe2ea;
   background: white;
+  color: #0f172a;
+  flex-shrink: 0;
 }
 
 .view-btn {
-  padding: 0 16px;
-  display: flex;
+  padding: 0 14px;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  min-width: 90px;
+  white-space: nowrap;
+  font-weight: 600;
 }
 
 .more-btn {
   width: 40px;
+  min-width: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .shop-skeleton {

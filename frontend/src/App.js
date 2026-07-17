@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import SessionExpired from "./components/sessionExpired/SessionExpired";
 import ProtectedRoute from "./routs/ProtectedRoute";
 import ShopSection from "./pages/Dashboard/ShopSection/ShopSection";
+import CustomerSection from "./pages/Dashboard/Customer/Customer";
 
 function App() {
   return (
@@ -82,6 +83,15 @@ function App() {
           element={
             <ProtectedRoute>
               <ShopSection/>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/customers"
+          element={
+            <ProtectedRoute>
+              <CustomerSection/>
             </ProtectedRoute>
           }
         />

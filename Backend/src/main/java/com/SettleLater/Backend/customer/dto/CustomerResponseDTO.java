@@ -26,4 +26,6 @@ public class CustomerResponseDTO {
     private boolean isActive;
 
     private LocalDateTime createdAt;
+
+    private String ShopName;
 }
