@@ -1,7 +1,11 @@
 import "./DashNavbar.css";
 import { Bell, Menu, X } from "lucide-react";
+import { useAuth } from "../../context/AuthContext";
 
 function DashNavbar({ onMenuToggle, isSidebarOpen, isMobileView }) {
+
+ const {user} = useAuth();
+
   return (
     <header className="dash-navbar">
 
@@ -28,11 +32,11 @@ function DashNavbar({ onMenuToggle, isSidebarOpen, isMobileView }) {
         <div className="profile-section">
 
           <div className="profile-avatar">
-            RK
+            {user?.name?.toUpperCase()?.substring(0,2)}
           </div>
 
           <div className="profile-info">
-            <h4>Rakesh Kumar</h4>
+            <h4>{user?.name}</h4>
             <span>Owner</span>
           </div>
 

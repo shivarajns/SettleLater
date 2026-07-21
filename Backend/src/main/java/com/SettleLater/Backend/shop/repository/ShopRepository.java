@@ -16,7 +16,7 @@ public interface ShopRepository extends JpaRepository<ShopModel, Long> {
     // Find shop by public shopId
     Optional<ShopModel> findByShopId(String shopId);
 
-
+    boolean existsByShopId(String shopId);
     // 4. Check duplicate shop name per user
     boolean existsByUser_UserIdAndNameIgnoreCase(
             String userId,

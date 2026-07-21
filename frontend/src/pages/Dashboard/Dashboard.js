@@ -1,8 +1,8 @@
 
-import DashNavbar from "../../components/DashboardNavbar/DashNavbar"
+import DashNavbar from "../../components/Dashboard/DashNavbar"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import DashboardLayout from "../../layouts/DashboardLayout/DashboardLayout"
-import MyShopsSection from "../../components/Shop/MyShopsSection/MyShopsSection"
+import MyShopsSection from "../../components/Dashboard/Dashboard/MyShopsSection/MyShopsSection"
 
 function Dashboard() {
     return (
