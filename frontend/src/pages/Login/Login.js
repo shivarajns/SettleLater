@@ -84,6 +84,7 @@ function Login() {
       setLoading(true);
 
       const response = await loginUser(formData);
+      localStorage.setItem("token", response.token);
 
       if (response?.emailVerified === false) {
         navigate('/verify-email');

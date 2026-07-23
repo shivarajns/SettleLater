@@ -26,16 +26,25 @@ public class LoginService {
 
 
     public LoginResponseDTO login(LoginRequestDTO request){
-        User user = userRepository.findByEmail(request.getEmail()).orElseThrow(
-                ()-> new UsernameNotFoundException("User Not found with Email.")
-        );
+        User user = userRepository.findByEmail(request.getEmail()).orElse(null);
 
-        if(!userRepository.existsByEmail(request.getEmail())){
+        if(user == null){
             return new LoginResponseDTO(
-                    "User Not Found With This Email.",
+                    "Wrong Credentials",
                     null, null
 
             );
+        }
+
+        if(!passwordEncoder.matches(
+                request.getPassword(),
+                user.getPassword()
+        )){
+            return new LoginResponseDTO(
+                    "Wrong Credentials.",
+                    null, null
+            );
+
         }
 
         String accessToken = jwtService.generateToken(
@@ -46,19 +55,6 @@ public class LoginService {
             return new LoginResponseDTO(
                     "Please verify your email before logging in.",
                     accessToken, false);
-        }
-
-
-
-        if(!passwordEncoder.matches(
-                request.getPassword(),
-                user.getPassword()
-        )){
-            return new LoginResponseDTO(
-                    "Wrong Credentials.",
-                     null, null
-            );
-
         }
 
         return new LoginResponseDTO("Login Success"

@@ -149,6 +149,7 @@ function Signup() {
       setLoading(true);
 
       const response = await registerUser(formData);
+      console.log("Registration response:", response);
 
       setAlert({
         type: "success",
@@ -172,7 +173,7 @@ function Signup() {
         confirmPassword: false,
       });
 
-      navigate("/verify-email")
+      navigate("/login")
     } catch (error) {
       setAlert({
         type: "error",
