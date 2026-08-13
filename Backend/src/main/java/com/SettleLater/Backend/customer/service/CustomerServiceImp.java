@@ -1,5 +1,7 @@
 package com.SettleLater.Backend.customer.service;
 
+import com.SettleLater.Backend.CreditAccount.Model.CreditAccountEntity;
+import com.SettleLater.Backend.CreditAccount.Repository.CreditAccountRepo;
 import com.SettleLater.Backend.common.ApiResponse.ApiResponseDTO;
 import com.SettleLater.Backend.customer.dto.CreateCustomerDTO;
 import com.SettleLater.Backend.customer.dto.CustomerListResponseDTO;
@@ -24,10 +26,12 @@ public class CustomerServiceImp implements CustomerService {
 
     private final CustomerRepository customerRepository;
     private final ShopRepository shopRepository;
+    private final CreditAccountRepo creditAccountRepo;
 
-    public CustomerServiceImp(CustomerRepository customerRepository, ShopRepository shopRepository) {
+    public CustomerServiceImp(CustomerRepository customerRepository, ShopRepository shopRepository, CreditAccountRepo creditAccountRepo) {
         this.customerRepository = customerRepository;
         this.shopRepository = shopRepository;
+        this.creditAccountRepo = creditAccountRepo;
     }
 
     @Override
@@ -59,6 +63,16 @@ public class CustomerServiceImp implements CustomerService {
                 .isActive(savedCustomer.isActive())
                 .createdAt(savedCustomer.getCreatedAt())
                 .build();
+
+        if(creditAccountRepo.existsByCustomer(savedCustomer)){
+             throw new CustomerAlreadyExists("Customer Already Exists");
+        }
+
+        CreditAccountEntity creditAccount = new CreditAccountEntity();
+        creditAccount.setShop(savedCustomer.getShop());
+        creditAccount.setCustomer(savedCustomer);
+
+        creditAccountRepo.save(creditAccount);
 
         return ApiResponseDTO.<CustomerResponseDTO>builder()
                 .success(true)
