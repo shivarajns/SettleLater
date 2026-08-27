@@ -19,4 +19,8 @@ public interface CreditAccountRepo extends JpaRepository<CreditAccountEntity, Lo
     boolean existsByCustomer(Customer customer);
 
     boolean existsByShopAndCustomer(ShopModel shop, Customer customer);
-}
+
+    Optional<CreditAccountEntity> findByCustomerAndShop(
+            Customer customer,
+            ShopModel shop
+    );}
