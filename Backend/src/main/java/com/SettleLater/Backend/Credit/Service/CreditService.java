@@ -41,11 +41,6 @@ public class CreditService {
             CreateCreditRequest request
     ) {
 
-        System.out.println("===== CREATE CREDIT START =====");
-
-        // ---------------------------------------------------------
-        // 1. Validate request
-        // ---------------------------------------------------------
 
         if (request == null) {
             throw new IllegalArgumentException(
@@ -77,27 +72,8 @@ public class CreditService {
             );
         }
 
-        System.out.println("shopId = " + shopId);
-        System.out.println("customerId = " + customerId);
-        System.out.println("amount = " + request.amount());
-        System.out.println("dueDate = " + request.dueDate());
-
-
-        // ---------------------------------------------------------
-        // 2. Get authenticated user
-        // ---------------------------------------------------------
-
         User authenticatedUser = getAuthenticatedUser();
 
-        System.out.println(
-                "Authenticated User ID = "
-                        + authenticatedUser.getUserId()
-        );
-
-
-        // ---------------------------------------------------------
-        // 3. Find shop
-        // ---------------------------------------------------------
 
         ShopModel shop = shopRepository
                 .findByShopId(shopId)
@@ -106,14 +82,6 @@ public class CreditService {
                                 "Shop not found"
                         )
                 );
-
-        System.out.println("===== SHOP FOUND =====");
-        System.out.println("Shop ID = " + shop.getShopId());
-
-
-        // ---------------------------------------------------------
-        // 4. Verify shop ownership
-        // ---------------------------------------------------------
 
         if (shop.getUser() == null) {
 
@@ -124,9 +92,6 @@ public class CreditService {
 
         String shopOwnerId = shop.getUser().getUserId();
 
-        System.out.println(
-                "Shop Owner ID = " + shopOwnerId
-        );
 
         if (!shopOwnerId.equals(
                 authenticatedUser.getUserId())) {
@@ -137,10 +102,6 @@ public class CreditService {
         }
 
 
-        // ---------------------------------------------------------
-        // 5. Find customer
-        // ---------------------------------------------------------
-
         Customer customer = customerRepository
                 .findByCustomerId(customerId)
                 .orElseThrow(() ->
@@ -149,15 +110,6 @@ public class CreditService {
                         )
                 );
 
-        System.out.println("===== CUSTOMER FOUND =====");
-        System.out.println(
-                "Customer ID = " + customer.getCustomerId()
-        );
-
-
-        // ---------------------------------------------------------
-        // 6. Verify customer belongs to this shop
-        // ---------------------------------------------------------
 
         if (customer.getShop() == null) {
 
@@ -175,10 +127,6 @@ public class CreditService {
         }
 
 
-        // ---------------------------------------------------------
-        // 7. Find Credit Account
-        // ---------------------------------------------------------
-
         CreditAccountEntity creditAccount =
                 creditAccountRepository
                         .findByCustomerAndShop(
@@ -191,34 +139,7 @@ public class CreditService {
                                 )
                         );
 
-        System.out.println(
-                "===== CREDIT ACCOUNT FOUND ====="
-        );
 
-        System.out.println(
-                "Account ID = "
-                        + creditAccount.getAccountId()
-        );
-
-        System.out.println(
-                "Total Credit = "
-                        + creditAccount.getTotalCredit()
-        );
-
-        System.out.println(
-                "Total Paid = "
-                        + creditAccount.getTotalPaid()
-        );
-
-        System.out.println(
-                "Outstanding Balance = "
-                        + creditAccount.getOutstandingBalance()
-        );
-
-
-        // ---------------------------------------------------------
-        // 8. Protect against NULL financial values
-        // ---------------------------------------------------------
 
         BigDecimal currentTotalCredit =
                 creditAccount.getTotalCredit() != null
@@ -231,9 +152,6 @@ public class CreditService {
                         : BigDecimal.ZERO;
 
 
-        // ---------------------------------------------------------
-        // 9. Create Credit
-        // ---------------------------------------------------------
 
         Credit credit = Credit.builder()
                 .creditAccount(creditAccount)
@@ -248,18 +166,8 @@ public class CreditService {
         Credit savedCredit =
                 creditRepository.save(credit);
 
-        System.out.println(
-                "===== CREDIT CREATED ====="
-        );
-
-        System.out.println(
-                "Credit ID = " + savedCredit.getId()
-        );
 
 
-        // ---------------------------------------------------------
-        // 10. Create Ledger Transaction
-        // ---------------------------------------------------------
 
         LedgerTransaction transaction =
                 LedgerTransaction.builder()
@@ -279,14 +187,6 @@ public class CreditService {
 
         ledgerTransactionRepository.save(transaction);
 
-        System.out.println(
-                "===== LEDGER TRANSACTION CREATED ====="
-        );
-
-
-        // ---------------------------------------------------------
-        // 11. Update Credit Account
-        // ---------------------------------------------------------
 
         creditAccount.setTotalCredit(
                 currentTotalCredit.add(
@@ -302,36 +202,10 @@ public class CreditService {
 
         creditAccountRepository.save(creditAccount);
 
-        System.out.println(
-                "===== CREDIT ACCOUNT UPDATED ====="
-        );
-
-        System.out.println(
-                "New Total Credit = "
-                        + creditAccount.getTotalCredit()
-        );
-
-        System.out.println(
-                "New Outstanding Balance = "
-                        + creditAccount.getOutstandingBalance()
-        );
-
-
-        // ---------------------------------------------------------
-        // 12. Complete
-        // ---------------------------------------------------------
-
-        System.out.println(
-                "===== CREATE CREDIT SUCCESS ====="
-        );
-
         return savedCredit;
     }
 
 
-    // =============================================================
-    // AUTHENTICATED USER
-    // =============================================================
 
     private User getAuthenticatedUser() {
 

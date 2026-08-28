@@ -45,7 +45,8 @@ public class CreditAccountEntity {
     @JoinColumn(
             name = "customer_id",
             nullable = false,
-            unique = true
+            unique = true,
+            referencedColumnName = "customer_id"
     )
     private Customer customer;
 
@@ -55,7 +56,8 @@ public class CreditAccountEntity {
     )
     @JoinColumn(
             name = "shop_id",
-            nullable = false
+            nullable = false,
+            referencedColumnName = "shop_id"
     )
     private ShopModel shop;
 

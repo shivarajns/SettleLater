@@ -39,10 +39,6 @@ public class Credit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /**
-     * Public identifier for the credit.
-     * The internal database ID should not be exposed through APIs.
-     */
     @Column(
             name = "credit_id",
             nullable = false,
@@ -52,22 +48,16 @@ public class Credit {
     )
     private String creditId;
 
-    /**
-     * Credit belongs to exactly one CreditAccount.
-     * A CreditAccount can contain multiple Credit records.
-     */
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(
             name = "credit_account_id",
-            nullable = false
+            nullable = false,
+            referencedColumnName = "account_id"
     )
     private CreditAccountEntity creditAccount;
 
-    /**
-     * Original amount of the credit.
-     * This value represents the amount recorded when the credit was created
-     * and should not be directly modified after creation.
-     */
+
     @Column(
             name = "original_amount",
             nullable = false,
@@ -76,9 +66,7 @@ public class Credit {
     )
     private BigDecimal originalAmount;
 
-    /**
-     * Current unpaid amount for this credit.
-     */
+
     @Column(
             name = "outstanding_amount",
             nullable = false,
@@ -87,28 +75,21 @@ public class Credit {
     )
     private BigDecimal outstandingAmount;
 
-    /**
-     * Date on which the credit was created.
-     */
+
     @Column(
             name = "credit_date",
             nullable = false
     )
     private LocalDate creditDate;
 
-    /**
-     * Mandatory date by which the credit is expected to be paid.
-     */
+
     @Column(
             name = "due_date",
             nullable = false
     )
     private LocalDate dueDate;
 
-    /**
-     * Optional description of the credit.
-     * Example: Grocery Items, Household Items, etc.
-     */
+
     @Column(
             name = "description",
             length = 500
