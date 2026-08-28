@@ -76,6 +76,7 @@ public class LedgerTransaction {
     )
     private Credit credit;
 
+
     /**
      * Type of financial transaction.
      */

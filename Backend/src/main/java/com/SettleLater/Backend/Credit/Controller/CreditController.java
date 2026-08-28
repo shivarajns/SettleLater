@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/shops/{shopId}/customers/{customerId}/credits")
 @RequiredArgsConstructor
@@ -44,5 +46,55 @@ public class CreditController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(response);
+    }
+
+    @GetMapping
+    public ResponseEntity<ApiResponseDTO<List<CreditResponse>>> getAllCredits(
+            @PathVariable String shopId,
+            @PathVariable String customerId
+    ) {
+
+        List<CreditResponse> credits =
+                creditService.getAllCredits(
+                        shopId,
+                        customerId
+                );
+
+        ApiResponseDTO<List<CreditResponse>> response =
+                ApiResponseDTO.<List<CreditResponse>>builder()
+                        .success(true)
+                        .message(
+                                credits.isEmpty()
+                                        ? "No credits found"
+                                        : "Credits retrieved successfully"
+                        )
+                        .data(credits)
+                        .build();
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{creditId}")
+    public ResponseEntity<ApiResponseDTO<CreditResponse>> getCreditById(
+            @PathVariable String shopId,
+            @PathVariable String customerId,
+            @PathVariable String creditId
+    ) {
+
+        CreditResponse creditResponse =
+                creditService.getCreditById(
+                        shopId,
+                        customerId,
+                        creditId
+                );
+
+        ApiResponseDTO<CreditResponse> response =
+                ApiResponseDTO.<CreditResponse>builder()
+                        .success(true)
+                        .message("Credit retrieved successfully")
+                        .data(creditResponse)
+                        .build();
+
+        return ResponseEntity.ok(response);
     }
 }
