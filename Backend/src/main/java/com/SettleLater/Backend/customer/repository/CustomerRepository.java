@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import java.util.List;
+import java.util.Optional;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
@@ -20,4 +21,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     Page<Customer> findByShop_ShopIdAndIsActiveTrue(String shopId, Pageable pageable);
 
     Page<Customer> findByShop_User_Email(String shopUserEmail, Pageable pageable);
+
+    Optional<Object> findById(String customerId);
+
+    Optional<Customer> findByCustomerId(String customerId);
 }
