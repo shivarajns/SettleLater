@@ -1,0 +1,636 @@
+/* =========================================================
+   ADD CREDIT MODAL
+   SettleLater Design System
+   ========================================================= */
+
+.credit-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgba(15, 23, 42, 0.48);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  animation: creditOverlayIn 0.25s ease-out;
+}
+
+
+/* =========================================================
+   MODAL CONTAINER
+   ========================================================= */
+
+.credit-modal {
+  position: relative;
+
+  width: 100%;
+  max-width: 520px;
+  max-height: calc(100vh - 48px);
+
+  overflow-y: auto;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(248, 250, 252, 0.97)
+    );
+
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 22px;
+
+  box-shadow:
+    0 25px 60px rgba(15, 23, 42, 0.18),
+    0 8px 25px rgba(79, 70, 229, 0.08);
+
+  animation: creditModalIn 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   TOP ACCENT
+   ========================================================= */
+
+.credit-modal::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 4px;
+
+  border-radius: 22px 22px 0 0;
+
+  background: linear-gradient(
+    90deg,
+    #4f46e5,
+    #06b6d4,
+    #8b5cf6
+  );
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.credit-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 28px 28px 20px;
+}
+
+.credit-modal-header h2 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.credit-modal-header p {
+  margin: 6px 0 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
+.credit-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+
+  background: rgba(248, 250, 252, 0.8);
+
+  color: #64748b;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.credit-modal-close:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+
+  transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   CUSTOMER INFORMATION CARD
+   ========================================================= */
+
+.credit-customer-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+
+  margin: 0 28px 24px;
+  padding: 16px;
+
+  border: 1px solid rgba(199, 210, 254, 0.7);
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(238, 242, 255, 0.9),
+      rgba(236, 254, 255, 0.75)
+    );
+
+  position: relative;
+  overflow: hidden;
+}
+
+.credit-customer-info::after {
+  content: "";
+
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  top: -50px;
+  right: -30px;
+
+  border-radius: 50%;
+
+  background: rgba(79, 70, 229, 0.08);
+
+  pointer-events: none;
+}
+
+.credit-customer-info > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  min-width: 0;
+}
+
+.credit-customer-info span {
+  color: #64748b;
+
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.credit-customer-info strong {
+  color: #1e293b;
+
+  font-size: 14px;
+  font-weight: 650;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.credit-modal form {
+  padding: 0 28px 28px;
+}
+
+.credit-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-bottom: 19px;
+}
+
+.credit-form-group label {
+  color: #334155;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.credit-form-group input,
+.credit-form-group textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  color: #0f172a;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.credit-form-group input {
+  height: 46px;
+  padding: 0 14px;
+}
+
+.credit-form-group textarea {
+  min-height: 90px;
+  padding: 12px 14px;
+
+  resize: vertical;
+}
+
+.credit-form-group input::placeholder,
+.credit-form-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+.credit-form-group input:hover,
+.credit-form-group textarea:hover {
+  border-color: #cbd5e1;
+}
+
+.credit-form-group input:focus,
+.credit-form-group textarea:focus {
+  border-color: #818cf8;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 3px rgba(79, 70, 229, 0.10),
+    0 4px 12px rgba(79, 70, 229, 0.05);
+}
+
+
+/* =========================================================
+   AMOUNT FIELD
+   ========================================================= */
+
+.credit-form-group input[type="number"] {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+/* Remove number input arrows */
+
+.credit-form-group input[type="number"]::-webkit-inner-spin-button,
+.credit-form-group input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.credit-form-group input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+   ========================================================= */
+
+.credit-form-error {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 18px;
+  padding: 11px 13px;
+
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+
+  background: #fef2f2;
+
+  color: #b91c1c;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  animation: creditErrorIn 0.2s ease-out;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.credit-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 10px;
+
+  padding-top: 6px;
+}
+
+
+/* Cancel */
+
+.credit-cancel-btn {
+  height: 44px;
+
+  padding: 0 18px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  color: #475569;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.credit-cancel-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+
+/* Create Credit */
+
+.credit-submit-btn {
+  position: relative;
+  overflow: hidden;
+
+  height: 44px;
+
+  padding: 0 21px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #6366f1
+  );
+
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 16px rgba(79, 70, 229, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.credit-submit-btn::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: -100%;
+
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.5s ease;
+}
+
+.credit-submit-btn:hover::before {
+  left: 130%;
+}
+
+.credit-submit-btn:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 9px 22px rgba(79, 70, 229, 0.32);
+
+  filter: brightness(1.03);
+}
+
+.credit-submit-btn:active {
+  transform: translateY(0);
+}
+
+.credit-submit-btn:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+  box-shadow:
+    0 4px 10px rgba(79, 70, 229, 0.12);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes creditOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes creditModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes creditErrorIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .credit-modal-overlay {
+    align-items: flex-end;
+
+    padding: 0;
+  }
+
+  .credit-modal {
+    max-width: none;
+    max-height: 92vh;
+
+    border-radius: 22px 22px 0 0;
+
+    animation-name: creditModalMobileIn;
+  }
+
+  .credit-modal-header {
+    padding: 24px 20px 18px;
+  }
+
+  .credit-customer-info {
+    grid-template-columns: 1fr;
+
+    margin: 0 20px 22px;
+  }
+
+  .credit-modal form {
+    padding: 0 20px 22px;
+  }
+
+  .credit-modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .credit-cancel-btn,
+  .credit-submit-btn {
+    width: 100%;
+  }
+}
+
+@keyframes creditModalMobileIn {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.credit-success-notification {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 18px;
+
+  border: 1px solid #a7f3d0;
+  border-radius: 12px;
+
+  background: #ecfdf5;
+  color: #047857;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+
+  animation: creditSuccessIn 0.25s ease-out;
+}
+
+.credit-success-notification span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+
+  border-radius: 50%;
+
+  background: #10b981;
+  color: white;
+}
+
+@keyframes creditSuccessIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

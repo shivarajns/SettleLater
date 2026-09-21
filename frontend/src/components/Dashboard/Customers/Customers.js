@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Customers.css";
+import AddCreditModal from "../Credit/AddCreditModal"
 
 import {
   Users,
@@ -48,6 +49,27 @@ function Customers() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/sessionexpired");
+  };
+
+  const [showCreditModal, setShowCreditModal] =
+    useState(false);
+
+  const [selectedCustomer, setSelectedCustomer] =
+    useState(null);
+
+  const handleAddCredit = (customer) => {
+    setSelectedCustomer(customer);
+    setShowCreditModal(true);
+  };
+
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const handleCreditSuccess = (message) => {
+    setSuccessMessage(message);
+
+    setTimeout(() => {
+      setSuccessMessage("");
+    }, 3000);
   };
 
   const loadCustomers = async (
@@ -157,6 +179,13 @@ function Customers() {
   return (
     <>
       <section className="customers-page">
+
+        {successMessage && (
+          <div className="credit-success-notification">
+            <span>✓</span>
+            {successMessage}
+          </div>
+        )}
 
         {/* HEADER */}
 
@@ -343,7 +372,7 @@ function Customers() {
 
         {!loading &&
           filteredCustomers.length >
-            0 && (
+          0 && (
 
             <div className="customers-table-wrapper">
 
@@ -475,11 +504,10 @@ function Customers() {
                         <td>
 
                           <span
-                            className={`customer-status ${
-                              customer.active
-                                ? "active"
-                                : "inactive"
-                            }`}
+                            className={`customer-status ${customer.active
+                              ? "active"
+                              : "inactive"
+                              }`}
                           >
                             {customer.active
                               ? "Active"
@@ -495,9 +523,14 @@ function Customers() {
                             <button
                               className="view-btn"
                               type="button"
+                              onClick={() =>
+                                handleAddCredit(
+                                  customer
+                                )
+                              }
                             >
                               <Eye size={16} />
-                              View
+                              Add Credit
                             </button>
 
                             <button
@@ -582,6 +615,16 @@ function Customers() {
         onCustomerCreated={() =>
           loadCustomers(currentPage)
         }
+      />
+
+      <AddCreditModal
+        isOpen={showCreditModal}
+        onClose={() => {
+          setShowCreditModal(false);
+          setSelectedCustomer(null);
+        }}
+        customer={selectedCustomer}
+        onSuccess={handleCreditSuccess}
       />
     </>
   );

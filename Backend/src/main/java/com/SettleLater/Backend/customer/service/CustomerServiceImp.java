@@ -62,6 +62,7 @@ public class CustomerServiceImp implements CustomerService {
                 .address(savedCustomer.getAddress())
                 .isActive(savedCustomer.isActive())
                 .createdAt(savedCustomer.getCreatedAt())
+                .shopId(savedCustomer.getShop().getShopId())
                 .build();
 
         if(creditAccountRepo.existsByCustomer(savedCustomer)){
@@ -107,6 +108,7 @@ public class CustomerServiceImp implements CustomerService {
                                 .isActive(c.isActive())
                                 .createdAt(c.getCreatedAt())
                                 .ShopName(c.getShop().getName())
+                                .shopId(c.getShop().getShopId())
                                 .build()
                         ).toList();
 
@@ -153,6 +155,7 @@ public class CustomerServiceImp implements CustomerService {
                         .isActive(c.isActive())
                         .createdAt(c.getCreatedAt())
                         .ShopName(c.getShop().getName())
+                        .shopId(c.getShop().getShopId())
                         .build())
                         .toList();
 
