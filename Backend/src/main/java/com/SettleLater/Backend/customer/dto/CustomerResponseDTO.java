@@ -28,4 +28,6 @@ public class CustomerResponseDTO {
     private LocalDateTime createdAt;
 
     private String ShopName;
+
+    private String shopId;
 }
