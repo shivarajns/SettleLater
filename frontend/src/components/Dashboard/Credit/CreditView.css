@@ -546,6 +546,7 @@
 
 .credit-description p {
   margin: 6px 0 0;
+  overflow: hidden;
 
   color: #475569;
 

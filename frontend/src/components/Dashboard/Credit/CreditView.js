@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getAllCredits } from "../Credit/creditService";
 import "./CreditView.css"
 
 function CreditView() {
     const location = useLocation();
+    const navigate = useNavigate();
 
     const {
         shopId,
@@ -15,6 +16,17 @@ function CreditView() {
     const [credits, setCredits] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+
+    const handleViewDetails = (credit) => {
+        navigate("/credit-details", {
+            state: {
+                credit,
+                shopId,
+                customerId,
+                customerName,
+            },
+        });
+    };
 
     useEffect(() => {
         const loadCredits = async () => {
@@ -247,6 +259,7 @@ function CreditView() {
                                     <button
                                         type="button"
                                         className="credit-details-btn"
+                                        onClick={()=> handleViewDetails(credit)}
                                     >
                                         View Details
                                     </button>
