@@ -21,3 +21,12 @@ export const createCredit = async (
 
   return response.data;
 };
+
+export const getAllCredits = async (shopId, customerId) => {
+  const response = await axios.get(
+    `${BASE_URL}/api/shops/${shopId}/customers/${customerId}/credits`,
+    getAuthHeader()
+  );
+
+  return response.data;
+};

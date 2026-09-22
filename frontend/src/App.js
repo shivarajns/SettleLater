@@ -11,6 +11,8 @@ import SessionExpired from "./components/sessionExpired/SessionExpired";
 import ProtectedRoute from "./routs/ProtectedRoute";
 import ShopSection from "./pages/Dashboard/ShopSection/ShopSection";
 import CustomerSection from "./pages/Dashboard/Customer/Customer";
+import CreditView from "./components/Dashboard/Credit/CreditView";
+import CreditDetails from "./components/Dashboard/Credit/CreditDetails";
 
 function App() {
   return (
@@ -94,6 +96,20 @@ function App() {
               <CustomerSection/>
             </ProtectedRoute>
           }
+        />
+
+        <Route
+          path="/credit-view"
+          element={
+            <ProtectedRoute>
+              <CreditView/>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/credit-details"
+          element={<CreditDetails/>}
         />
 
       </Routes>
