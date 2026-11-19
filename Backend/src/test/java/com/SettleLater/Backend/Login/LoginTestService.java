@@ -74,4 +74,25 @@ class LoginServiceTest {
         assertNull(res.getToken());
         assertNull(res.getEmailVerified());
     }
+
+    @Test
+    void buildShouldFail_intentionalFailure() {
+        User user = new User();
+        user.setEmail("user@example.com");
+        user.setPassword("hashedPass");
+        user.setVerified(true);
+
+        LoginRequestDTO req = new LoginRequestDTO();
+        req.setEmail("user@example.com");
+        req.setPassword("1234");
+
+        when(userRepository.findByEmail("user@example.com")).thenReturn(Optional.of(user));
+        when(passwordEncoder.matches("1234", "hashedPass")).thenReturn(true);
+        when(jwtService.generateToken("user@example.com")).thenReturn("jwt-token");
+
+        LoginResponseDTO res = loginService.login(req);
+
+        // Intentionally wrong assertion to break the CI build
+        assertEquals("This Should Fail CI", res.getMessage());
+    }
 }
