@@ -72,6 +72,16 @@ function Customers() {
     }, 3000);
   };
 
+  const handleViewCredit = (customer) => {
+    navigate("/credit-view", {
+      state: {
+        shopId: customer.shopId,
+        customerId: customer.customerId,
+        customerName: customer.customerName,
+      },
+    });
+  };
+
   const loadCustomers = async (
     page = 0
   ) => {
@@ -532,6 +542,18 @@ function Customers() {
                               <Eye size={16} />
                               Add Credit
                             </button>
+
+                            <button
+                              className="view-btn"
+                              type="button"
+                              onClick={() =>
+                                handleViewCredit(customer)
+                              }
+                            >
+                              <Eye size={16} />
+                              View Credit
+                            </button>
+
 
                             <button
                               className="more-btn"
