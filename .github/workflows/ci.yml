@@ -44,6 +44,7 @@ jobs:
           SPRING_DATASOURCE_USERNAME: root
           SPRING_DATASOURCE_PASSWORD: root
           SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
+          JWT_SECRET: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
 
       - name: Upload test results
         if: always()
