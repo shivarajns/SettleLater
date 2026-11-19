@@ -19,7 +19,7 @@ jobs:
         ports:
           - 3306:3306
         options: >-
-          --health-cmd="mysqladmin ping -h localhost"
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
@@ -40,13 +40,14 @@ jobs:
         run: mvn -B clean verify
         working-directory: Backend
         env:
-          env:
-            SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/settlelater_test
-            SPRING_DATASOURCE_USERNAME: root
-            SPRING_DATASOURCE_PASSWORD: root
-            SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
-            SPRING_MAIL_HOST: localhost
-            SPRING_MAIL_PORT: 1025
+          SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/settlelater_test
+          SPRING_DATASOURCE_USERNAME: root
+          SPRING_DATASOURCE_PASSWORD: root
+          SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
+          JWT_SECRET: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+          JWT_ACCESS_TOKEN_EXPIRATION: 86400000
+          SPRING_MAIL_HOST: localhost
+          SPRING_MAIL_PORT: 1025
 
       - name: Upload test results
         if: always()
