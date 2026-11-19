@@ -23,10 +23,13 @@ jobs:
 
       - name: Build and run test
         run: mvn -B clean verify
+        working-directory: Backend
+
 
       - name: upload test result
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
-          path: target/surefire-reports/
+          cache-dependency-path: Backend/pom.xml
+          path: Backend/target/surefire-reports/
