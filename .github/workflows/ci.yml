@@ -10,26 +10,44 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: settlelater_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: set up JDK
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
           cache: maven
+          cache-dependency-path: Backend/pom.xml
 
-      - name: Build and run test
+      - name: Build and run tests
         run: mvn -B clean verify
         working-directory: Backend
+        env:
+          SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/settlelater_test
+          SPRING_DATASOURCE_USERNAME: root
+          SPRING_DATASOURCE_PASSWORD: root
+          SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
 
-
-      - name: upload test result
+      - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
-          cache-dependency-path: Backend/pom.xml
           path: Backend/target/surefire-reports/
