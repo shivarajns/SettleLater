@@ -17,7 +17,7 @@ public class ResendEmailVerificationService {
     private final UserRepository userRepository;
     private final EmailSenderService emailSenderService;
 
-    @Value("${BASE_URL}")
+    @Value("${BASE_URL:http://localhost:8080}")
     private String BASE_URL;
 
     public ResendEmailVerificationService(EmailVerificationTokenRepository emailVerificationTokenRepository, UserRepository userRepository, EmailSenderService emailSenderService) {

@@ -48,6 +48,7 @@ jobs:
           JWT_ACCESS_TOKEN_EXPIRATION: 86400000
           SPRING_MAIL_HOST: localhost
           SPRING_MAIL_PORT: 1025
+          BASE_URL: http://localhost:8080
 
       - name: Upload test results
         if: always()

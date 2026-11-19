@@ -21,7 +21,7 @@ public class UserRegistrationService {
     private final EmailVerificationTokenRepository emailVerificationTokenRepository;
     private final EmailSenderService emailSenderService;
 
-    @Value("${BASE_URL}")
+    @Value("${BASE_URL:http://localhost:8080}")
     private String BASE_URL;
 
     public UserRegistrationService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, EmailVerificationTokenRepository emailVerificationTokenRepository, EmailSenderService emailSenderService) {
